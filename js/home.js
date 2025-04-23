@@ -292,3 +292,121 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize the cards
   updateCards();
 });
+
+// region Blogs data
+// Blog data array
+const blogs = [
+  {
+    id: 1,
+    image: "./assets/images/blog-1.png",
+    title: "Medical Surgery Has Marked as One Of The Most Popular",
+    date: "August 30, 2025",
+    description: "Lorem Ipsum is simply dummy text of the printing.",
+  },
+  {
+    id: 2,
+    image: "./assets/images/blog-2.png",
+    title: "Medical Surgery Has Marked as One Of The Most Popular",
+    date: "August 30, 2025",
+    description: "Lorem Ipsum is simply dummy text of the printing.",
+  },
+  {
+    id: 3,
+    image: "./assets/images/blog-3.png",
+    title: "Medical Surgery Has Marked as One Of The Most Popular",
+    date: "August 30, 2025",
+    description: "Lorem Ipsum is simply dummy text of the printing.",
+  },
+  {
+    id: 4,
+    image: "./assets/images/blog-4.png",
+    title: "Medical Surgery Has Marked as One Of The Most Popular",
+    date: "August 30, 2025",
+    description: "Lorem Ipsum is simply dummy text of the printing.",
+  },
+];
+
+// Get the container element
+const blogsContainer = document.getElementById("blogs-container");
+
+// Loop through the blogs array and append HTML to the container
+blogs.forEach((blog) => {
+  const blogElement = document.createElement("div");
+  blogElement.style.flex = "1 1 calc(40% - 10px)";
+  blogElement.style.minWidth = "300px";
+
+  blogElement.innerHTML = `
+    <div class="flex gap-4">
+      <img src="${blog.image}" alt="Blog ${blog.id}"  />
+      <div class="text-secondary flex flex-col gap-5">
+        <p class="text-[18px] font-semibold">
+          ${blog.title}
+        </p>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-clock" style="color: #a6a5b2"></i>
+          <p class="text-[#A6A5B2]">${blog.date}</p>
+        </div>
+        <p class="text-[#A6A5B2]">
+          ${blog.description}
+        </p>
+        <button class="text-primary flex items-center gap-3">
+          Read more
+          <i class="fa-solid fa-arrow-right-long" style="color: #1a989d"></i>
+        </button>
+      </div>
+    </div>
+  `;
+
+  blogsContainer.appendChild(blogElement);
+});
+
+// region FAQ
+const faqData = [
+  {
+    question: "What can I expect during my first consultation?",
+    answer:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+  },
+  {
+    question: "How long do the treatments usually take?",
+    answer:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+  },
+  {
+    question: "Is there any downtime after the procedures?",
+    answer:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+  },
+  {
+    question: "How long do the results typically last?",
+    answer:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+  },
+];
+
+const accordionContainer = document.getElementById("faqAccordion");
+
+faqData.forEach((item, index) => {
+  const accordionItem = document.createElement("div");
+  accordionItem.className = "accordion-item";
+
+  const accordionHeader = document.createElement("div");
+  accordionHeader.className = "accordion-header";
+  accordionHeader.innerHTML = `
+        ${item.question}
+        <span class="accordion-icon"><i class="fa-solid fa-chevron-down"></i></span>
+    `;
+
+  const accordionContent = document.createElement("div");
+  accordionContent.className = "accordion-content";
+  accordionContent.textContent = item.answer;
+
+  accordionHeader.addEventListener("click", () => {
+    accordionContent.classList.toggle("active");
+    accordionHeader.querySelector(".accordion-icon").classList.toggle("active");
+  });
+
+  accordionItem.appendChild(accordionHeader);
+  accordionItem.appendChild(accordionContent);
+  accordionContainer.appendChild(accordionItem);
+});
