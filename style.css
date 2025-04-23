@@ -1,0 +1,49 @@
+/* Global Color Variables */
+:root {
+  --primary-color: #1a989d; /* Teal/turquoise color for top bar */
+  --secondary-color: #333333; /* Dark color for text */
+  --button-color: #1ba89e; /* Button color matching primary */
+  --white-color: #ffffff;
+  --light-bg-color: #f5f9fa; /* Light background color */
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.cormorant {
+  font-family: "Cormorant Garamond", serif;
+}
+
+/* Top Bar Styles */
+.top-bar {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 10px 0;
+  font-size: 14px;
+}
+
+/* icon color  */
+.social-icon,
+.social-icon i {
+  color: var(--white-color) !important;
+}
+
+.playfair {
+  font-family: "Playfair Display", serif;
+}
+
+.testimonial-card {
+  transition: transform 0.5s ease-in-out, opacity 0.4s ease-in-out;
+}
+.star-rating {
+  color: #ffd700;
+}
+.overlay-gradient {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(17, 24, 39, 0.8) 50%,
+    rgba(17, 24, 39, 0.9) 100%
+  );
+}
