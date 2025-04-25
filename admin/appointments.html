@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3DLifestyle - Medical Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#0D9488",
+              secondary: "#E5E7EB",
+              sidebar: "#F9FAFB",
+              completed: "#10B981",
+              pending: "#06B6D4",
+              rejected: "#EF4444",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-gray-50 font-sans">
+    <div class="flex flex-col md:flex-row min-h-screen">
+      <!-- Sidebar -->
+      <aside
+        class="w-full md:w-64 bg-sidebar border-r border-gray-200 md:min-h-screen"
+      >
+        <div class="p-4 border-b border-gray-200">
+          <div class="flex items-center">
+            <img
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-2Fpce9RBmrfTJ7ctwB6nWDZRRnjbYQ.png"
+              alt="3DLifestyle Logo"
+              class="h-10 w-10"
+            />
+            <div class="ml-2">
+              <h1 class="text-primary font-bold text-xl">3DLifestyle</h1>
+              <p class="text-xs text-gray-500">Healthcare System</p>
+            </div>
+          </div>
+        </div>
+
+        <nav class="p-4">
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="./overview.html"
+                class="flex items-center p-2 text-gray-600 rounded hover:bg-gray-100"
+              >
+                <i class="fas fa-th-large w-6"></i>
+                <span>Overview</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="./appointments.html"
+                class="flex items-center p-2 bg-primary bg-opacity-10 text-primary rounded"
+              >
+                <i class="far fa-calendar-alt w-6"></i>
+                <span>Appointments</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="./patients.html"
+                class="flex items-center p-2 text-gray-600 rounded hover:bg-gray-100"
+              >
+                <i class="fas fa-user w-6"></i>
+                <span>Patients</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="./prescription.html"
+                class="flex items-center p-2 text-gray-600 rounded hover:bg-gray-100"
+              >
+                <i class="fas fa-prescription w-6"></i>
+                <span>Prescription</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1">
+        <!-- Header -->
+        <header
+          class="bg-white border-b border-gray-200 p-4 flex justify-between items-center"
+        >
+          <div class="flex items-center">
+            <button class="md:hidden mr-4 text-gray-500">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div>
+              <h1 class="text-xl font-semibold">Dashboard</h1>
+              <div class="text-sm text-gray-500 flex items-center">
+                <span>Appointment</span>
+                <i class="fas fa-chevron-right mx-2 text-xs"></i>
+                <span class="text-primary">Appointment List</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center">
+            <div class="flex items-center">
+              <img
+                src="https://randomuser.me/api/portraits/men/32.jpg"
+                alt="Doctor Profile"
+                class="h-10 w-10 rounded-full border-2 border-white"
+              />
+              <div class="ml-2 hidden md:block">
+                <h3 class="font-medium text-sm">Dr Amirul Haque</h3>
+                <p class="text-xs text-gray-500">Urologist</p>
+              </div>
+            </div>
+            <button class="ml-2 text-gray-500">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+        </header>
+
+        <!-- Content -->
+        <div class="p-4 md:p-6">
+          <!-- Filters -->
+          <div class="flex flex-col md:flex-row gap-4 mb-6">
+            <div class="relative flex-1 md:max-w-xs">
+              <select
+                class="w-full p-2 pr-8 border border-gray-300 rounded bg-white appearance-none"
+              >
+                <option>Select Status</option>
+                <option>Pending</option>
+                <option>Completed</option>
+                <option>Rejected</option>
+              </select>
+              <div
+                class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
+              >
+                <i class="fas fa-chevron-down text-gray-400"></i>
+              </div>
+            </div>
+
+            <div class="relative flex-1 md:max-w-xs">
+              <div class="flex border border-gray-300 rounded bg-white">
+                <input
+                  type="text"
+                  placeholder="Select Date"
+                  class="w-full p-2 outline-none"
+                />
+                <button class="px-2 text-gray-400">
+                  <i class="far fa-calendar"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex-1">
+              <input
+                type="text"
+                placeholder="Search by patient's name or number"
+                class="w-full p-2 border border-gray-300 rounded"
+              />
+            </div>
+
+            <button
+              class="bg-primary text-white px-4 py-2 rounded flex items-center justify-center whitespace-nowrap"
+            >
+              <i class="fas fa-plus mr-2"></i>
+              Add Availability
+            </button>
+          </div>
+
+          <!-- Appointments List -->
+          <h2 class="text-lg font-semibold mb-4">Appointments List</h2>
+
+          <div class="overflow-x-auto">
+            <table class="min-w-full bg-white">
+              <thead>
+                <tr
+                  class="text-left text-xs text-gray-500 uppercase tracking-wider"
+                >
+                  <th class="py-3 px-4 font-medium">Time</th>
+                  <th class="py-3 px-4 font-medium">Patient</th>
+                  <th class="py-3 px-4 font-medium">Email</th>
+                  <th class="py-3 px-4 font-medium">Phone Number</th>
+                  <th class="py-3 px-4 font-medium">Date</th>
+                  <th class="py-3 px-4 font-medium">Status</th>
+                  <th class="py-3 px-4 font-medium">Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <!-- Row 1 -->
+                <tr class="hover:bg-gray-50">
+                  <td class="py-3 px-4">07:00</td>
+                  <td class="py-3 px-4">Dianne Russell</td>
+                  <td class="py-3 px-4">dianne@gmail.com</td>
+                  <td class="py-3 px-4">+325 1234 56789</td>
+                  <td class="py-3 px-4">04/14/2025</td>
+                  <td class="py-3 px-4">
+                    <span class="inline-flex items-center">
+                      <span class="w-2 h-2 rounded-full bg-pending mr-2"></span>
+                      Pending
+                    </span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <button class="text-gray-500">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Row 2 -->
+                <tr class="hover:bg-gray-50">
+                  <td class="py-3 px-4">07:00</td>
+                  <td class="py-3 px-4">Bessie Cooper</td>
+                  <td class="py-3 px-4">dianne@gmail.com</td>
+                  <td class="py-3 px-4">+325 1234 56789</td>
+                  <td class="py-3 px-4">04/14/2025</td>
+                  <td class="py-3 px-4">
+                    <span class="inline-flex items-center">
+                      <span
+                        class="w-2 h-2 rounded-full bg-rejected mr-2"
+                      ></span>
+                      Rejected
+                    </span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <button class="text-gray-500">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Row 3 -->
+                <tr class="bg-green-50 hover:bg-green-100">
+                  <td class="py-3 px-4">07:00</td>
+                  <td class="py-3 px-4">Marvin McKinney</td>
+                  <td class="py-3 px-4">dianne@gmail.com</td>
+                  <td class="py-3 px-4">+325 1234 56789</td>
+                  <td class="py-3 px-4">04/14/2025</td>
+                  <td class="py-3 px-4">
+                    <span class="inline-flex items-center">
+                      <span
+                        class="w-2 h-2 rounded-full bg-completed mr-2"
+                      ></span>
+                      Completed
+                    </span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <button class="text-gray-500">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Row 4 -->
+                <tr class="bg-green-50 hover:bg-green-100">
+                  <td class="py-3 px-4">07:00</td>
+                  <td class="py-3 px-4">Esther Howard</td>
+                  <td class="py-3 px-4">dianne@gmail.com</td>
+                  <td class="py-3 px-4">+325 1234 56789</td>
+                  <td class="py-3 px-4">04/14/2025</td>
+                  <td class="py-3 px-4">
+                    <span class="inline-flex items-center">
+                      <span
+                        class="w-2 h-2 rounded-full bg-completed mr-2"
+                      ></span>
+                      Completed
+                    </span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <button class="text-gray-500">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Row 5 -->
+                <tr class="bg-green-50 hover:bg-green-100">
+                  <td class="py-3 px-4">07:00</td>
+                  <td class="py-3 px-4">Marvin McKinney</td>
+                  <td class="py-3 px-4">dianne@gmail.com</td>
+                  <td class="py-3 px-4">+325 1234 56789</td>
+                  <td class="py-3 px-4">04/14/2025</td>
+                  <td class="py-3 px-4">
+                    <span class="inline-flex items-center">
+                      <span
+                        class="w-2 h-2 rounded-full bg-completed mr-2"
+                      ></span>
+                      Completed
+                    </span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <button class="text-gray-500">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Row 6 -->
+                <tr class="hover:bg-gray-50">
+                  <td class="py-3 px-4">07:00</td>
+                  <td class="py-3 px-4">Annette Black</td>
+                  <td class="py-3 px-4">dianne@gmail.com</td>
+                  <td class="py-3 px-4">+325 1234 56789</td>
+                  <td class="py-3 px-4">04/14/2025</td>
+                  <td class="py-3 px-4">
+                    <span class="inline-flex items-center">
+                      <span class="w-2 h-2 rounded-full bg-pending mr-2"></span>
+                      Pending
+                    </span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <button class="text-gray-500">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Row 7 -->
+                <tr class="hover:bg-gray-50">
+                  <td class="py-3 px-4">07:00</td>
+                  <td class="py-3 px-4">Cameron Williamson</td>
+                  <td class="py-3 px-4">dianne@gmail.com</td>
+                  <td class="py-3 px-4">+325 1234 56789</td>
+                  <td class="py-3 px-4">04/14/2025</td>
+                  <td class="py-3 px-4">
+                    <span class="inline-flex items-center">
+                      <span
+                        class="w-2 h-2 rounded-full bg-rejected mr-2"
+                      ></span>
+                      Rejected
+                    </span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <button class="text-gray-500">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Row 8 -->
+                <tr class="hover:bg-gray-50">
+                  <td class="py-3 px-4">07:00</td>
+                  <td class="py-3 px-4">Guy Hawkins</td>
+                  <td class="py-3 px-4">dianne@gmail.com</td>
+                  <td class="py-3 px-4">+325 1234 56789</td>
+                  <td class="py-3 px-4">04/14/2025</td>
+                  <td class="py-3 px-4">
+                    <span class="inline-flex items-center">
+                      <span
+                        class="w-2 h-2 rounded-full bg-rejected mr-2"
+                      ></span>
+                      Rejected
+                    </span>
+                  </td>
+                  <td class="py-3 px-4">
+                    <button class="text-gray-500">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <div
+            class="mt-6 flex flex-col md:flex-row justify-between items-center"
+          >
+            <div class="flex items-center space-x-1 mb-4 md:mb-0">
+              <button
+                class="px-3 py-1 border border-gray-300 rounded text-sm flex items-center"
+              >
+                <i class="fas fa-chevron-left mr-1"></i> Previous
+              </button>
+              <button
+                class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-sm"
+              >
+                1
+              </button>
+              <button
+                class="w-8 h-8 flex items-center justify-center bg-primary text-white border border-primary rounded text-sm"
+              >
+                2
+              </button>
+              <button
+                class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-sm"
+              >
+                3
+              </button>
+              <button
+                class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-sm"
+              >
+                4
+              </button>
+              <button
+                class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-sm"
+              >
+                5
+              </button>
+              <span class="px-2">...</span>
+              <button
+                class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-sm"
+              >
+                10
+              </button>
+              <button
+                class="px-3 py-1 border border-gray-300 rounded text-sm flex items-center"
+              >
+                Next <i class="fas fa-chevron-right ml-1"></i>
+              </button>
+            </div>
+
+            <div class="flex items-center">
+              <span class="text-sm text-gray-500 mr-2">Page</span>
+              <div class="relative inline-block w-16">
+                <select
+                  class="w-full appearance-none border border-gray-300 rounded py-1 pl-2 pr-6 bg-white"
+                >
+                  <option>2</option>
+                  <option>1</option>
+                  <option>3</option>
+                </select>
+                <div
+                  class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
+                >
+                  <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
+                </div>
+              </div>
+              <span class="text-sm text-gray-500 ml-2">of 34</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      // Mobile menu toggle
+      document
+        .querySelector("button.md\\:hidden")
+        .addEventListener("click", function () {
+          const sidebar = document.querySelector("aside");
+          sidebar.classList.toggle("hidden");
+        });
+    </script>
+  </body>
+</html>
