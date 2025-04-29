@@ -334,96 +334,18 @@
             </div>
 
             <div class="p-4">
-              <!-- Date Selection -->
-              <div class="mb-4">
-                <p class="text-sm text-gray-600 mb-1">SELECT DATE</p>
-                <div class="mb-2">
-                  <p class="text-sm font-medium">December 2025</p>
-                </div>
-
-                <div class="flex items-center mb-2">
-                  <button class="p-1 text-gray-500 hover:text-gray-700">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M15 19l-7-7 7-7"
-                      />
-                    </svg>
-                  </button>
-                  <button class="p-1 text-gray-500 hover:text-gray-700">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="h-5 w-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </button>
-                </div>
-
-                <div class="grid grid-cols-7 gap-1 text-center">
-                  <div class="text-xs text-gray-500 py-1">MON</div>
-                  <div class="text-xs text-gray-500 py-1">TUE</div>
-                  <div class="text-xs text-gray-500 py-1">WED</div>
-                  <div class="text-xs text-gray-500 py-1">THU</div>
-                  <div class="text-xs text-gray-500 py-1">FRI</div>
-                  <div class="text-xs text-gray-500 py-1">SAT</div>
-                  <div class="text-xs text-gray-500 py-1">SUN</div>
-
+              <!-- date selection -->
+              <div class="flex flex-col gap-5 mb-4">
+                <p class="text-sm text-gray-600 mb-2">SELECT DATE</p>
+                <div class="flex items-center gap-4">
+                  <input
+                    type="date"
+                    class="border rounded-md py-2 px-3 text-sm w-full"
+                  />
                   <button
-                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center hover:bg-gray-200"
+                    class="bg-[#405570] hover:bg-blue-800 text-white font-medium py-2 px-4 rounded"
                   >
-                    1
-                  </button>
-                  <button
-                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center hover:bg-gray-200"
-                  >
-                    2
-                  </button>
-                  <button
-                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center hover:bg-gray-200"
-                  >
-                    3
-                  </button>
-                  <button
-                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center hover:bg-gray-200"
-                  >
-                    4
-                  </button>
-                  <button
-                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center bg-blue-600 text-white"
-                  >
-                    5
-                  </button>
-                  <button
-                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center hover:bg-gray-200"
-                  >
-                    6
-                  </button>
-                  <button
-                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center hover:bg-gray-200"
-                  >
-                    7
-                  </button>
-                  <button
-                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center hover:bg-gray-200"
-                  >
-                    8
+                    Today
                   </button>
                 </div>
               </div>
