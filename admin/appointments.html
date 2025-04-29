@@ -33,17 +33,7 @@
         class="w-full md:w-64 bg-sidebar border-r border-gray-200 md:min-h-screen"
       >
         <div class="p-4 border-b border-gray-200">
-          <div class="flex items-center">
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-2Fpce9RBmrfTJ7ctwB6nWDZRRnjbYQ.png"
-              alt="3DLifestyle Logo"
-              class="h-10 w-10"
-            />
-            <div class="ml-2">
-              <h1 class="text-primary font-bold text-xl">3DLifestyle</h1>
-              <p class="text-xs text-gray-500">Healthcare System</p>
-            </div>
-          </div>
+          <img src="../assets/images/logo.png" alt="" />
         </div>
 
         <nav class="p-4">
@@ -66,7 +56,7 @@
                 <span>Appointments</span>
               </a>
             </li>
-            <li>
+            <!-- <li>
               <a
                 href="./patients.html"
                 class="flex items-center p-2 text-gray-600 rounded hover:bg-gray-100"
@@ -83,7 +73,7 @@
                 <i class="fas fa-prescription w-6"></i>
                 <span>Prescription</span>
               </a>
-            </li>
+            </li> -->
           </ul>
         </nav>
       </aside>
@@ -162,17 +152,10 @@
             <div class="flex-1">
               <input
                 type="text"
-                placeholder="Search by patient's name or number"
+                placeholder="Search by patient's name or email"
                 class="w-full p-2 border border-gray-300 rounded"
               />
             </div>
-
-            <button
-              class="bg-primary text-white px-4 py-2 rounded flex items-center justify-center whitespace-nowrap"
-            >
-              <i class="fas fa-plus mr-2"></i>
-              Add Availability
-            </button>
           </div>
 
           <!-- Appointments List -->
@@ -184,10 +167,9 @@
                 <tr
                   class="text-left text-xs text-gray-500 uppercase tracking-wider"
                 >
-                  <th class="py-3 px-4 font-medium">Time</th>
+                  <th class="py-3 px-4 font-medium">S.NO</th>
                   <th class="py-3 px-4 font-medium">Patient</th>
                   <th class="py-3 px-4 font-medium">Email</th>
-                  <th class="py-3 px-4 font-medium">Phone Number</th>
                   <th class="py-3 px-4 font-medium">Date</th>
                   <th class="py-3 px-4 font-medium">Status</th>
                   <th class="py-3 px-4 font-medium">Action</th>
@@ -199,7 +181,6 @@
                   <td class="py-3 px-4">07:00</td>
                   <td class="py-3 px-4">Dianne Russell</td>
                   <td class="py-3 px-4">dianne@gmail.com</td>
-                  <td class="py-3 px-4">+325 1234 56789</td>
                   <td class="py-3 px-4">04/14/2025</td>
                   <td class="py-3 px-4">
                     <span class="inline-flex items-center">
@@ -208,8 +189,21 @@
                     </span>
                   </td>
                   <td class="py-3 px-4">
-                    <button class="text-gray-500">
-                      <i class="fas fa-ellipsis-v"></i>
+                    <button
+                      class="bg-[#158E72] text-white rounded-md py-2 px-3 mr-2"
+                    >
+                      <i class="fa-solid fa-check"></i>
+                    </button>
+                    <button
+                      class="bg-[#ED1D4E] text-white rounded-md py-2 px-3 mr-2"
+                    >
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <button
+                      class="bg-[#7F7F7F] text-white rounded-md py-2 px-3 mr-2"
+                      onclick="document.getElementById('patientModal').classList.remove('hidden')"
+                    >
+                      <i class="fa-solid fa-eye"></i>
                     </button>
                   </td>
                 </tr>
@@ -219,7 +213,6 @@
                   <td class="py-3 px-4">07:00</td>
                   <td class="py-3 px-4">Bessie Cooper</td>
                   <td class="py-3 px-4">dianne@gmail.com</td>
-                  <td class="py-3 px-4">+325 1234 56789</td>
                   <td class="py-3 px-4">04/14/2025</td>
                   <td class="py-3 px-4">
                     <span class="inline-flex items-center">
@@ -230,18 +223,30 @@
                     </span>
                   </td>
                   <td class="py-3 px-4">
-                    <button class="text-gray-500">
-                      <i class="fas fa-ellipsis-v"></i>
+                    <button
+                      class="bg-[#158E72] text-white rounded-md py-2 px-3 mr-2"
+                    >
+                      <i class="fa-solid fa-check"></i>
+                    </button>
+                    <button
+                      class="bg-[#ED1D4E] text-white rounded-md py-2 px-3 mr-2"
+                    >
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <button
+                      class="bg-[#7F7F7F] text-white rounded-md py-2 px-3 mr-2"
+                      onclick="document.getElementById('patientModal').classList.remove('hidden')"
+                    >
+                      <i class="fa-solid fa-eye"></i>
                     </button>
                   </td>
                 </tr>
 
                 <!-- Row 3 -->
-                <tr class="bg-green-50 hover:bg-green-100">
+                <tr class="hover:bg-gray-50">
                   <td class="py-3 px-4">07:00</td>
                   <td class="py-3 px-4">Marvin McKinney</td>
                   <td class="py-3 px-4">dianne@gmail.com</td>
-                  <td class="py-3 px-4">+325 1234 56789</td>
                   <td class="py-3 px-4">04/14/2025</td>
                   <td class="py-3 px-4">
                     <span class="inline-flex items-center">
@@ -252,18 +257,30 @@
                     </span>
                   </td>
                   <td class="py-3 px-4">
-                    <button class="text-gray-500">
-                      <i class="fas fa-ellipsis-v"></i>
+                    <button
+                      class="bg-[#158E72] text-white rounded-md py-2 px-3 mr-2"
+                    >
+                      <i class="fa-solid fa-check"></i>
+                    </button>
+                    <button
+                      class="bg-[#ED1D4E66] text-white rounded-md py-2 px-3 mr-2"
+                    >
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <button
+                      class="bg-[#7F7F7F] text-white rounded-md py-2 px-3 mr-2"
+                      onclick="document.getElementById('patientModal').classList.remove('hidden')"
+                    >
+                      <i class="fa-solid fa-eye"></i>
                     </button>
                   </td>
                 </tr>
 
                 <!-- Row 4 -->
-                <tr class="bg-green-50 hover:bg-green-100">
+                <tr class="hover:bg-gray-50">
                   <td class="py-3 px-4">07:00</td>
                   <td class="py-3 px-4">Esther Howard</td>
                   <td class="py-3 px-4">dianne@gmail.com</td>
-                  <td class="py-3 px-4">+325 1234 56789</td>
                   <td class="py-3 px-4">04/14/2025</td>
                   <td class="py-3 px-4">
                     <span class="inline-flex items-center">
@@ -274,94 +291,21 @@
                     </span>
                   </td>
                   <td class="py-3 px-4">
-                    <button class="text-gray-500">
-                      <i class="fas fa-ellipsis-v"></i>
+                    <button
+                      class="bg-[#158E7266] text-white rounded-md py-2 px-3 mr-2"
+                    >
+                      <i class="fa-solid fa-check"></i>
                     </button>
-                  </td>
-                </tr>
-
-                <!-- Row 5 -->
-                <tr class="bg-green-50 hover:bg-green-100">
-                  <td class="py-3 px-4">07:00</td>
-                  <td class="py-3 px-4">Marvin McKinney</td>
-                  <td class="py-3 px-4">dianne@gmail.com</td>
-                  <td class="py-3 px-4">+325 1234 56789</td>
-                  <td class="py-3 px-4">04/14/2025</td>
-                  <td class="py-3 px-4">
-                    <span class="inline-flex items-center">
-                      <span
-                        class="w-2 h-2 rounded-full bg-completed mr-2"
-                      ></span>
-                      Completed
-                    </span>
-                  </td>
-                  <td class="py-3 px-4">
-                    <button class="text-gray-500">
-                      <i class="fas fa-ellipsis-v"></i>
+                    <button
+                      class="bg-[#ED1D4E] text-white rounded-md py-2 px-3 mr-2"
+                    >
+                      <i class="fa-solid fa-xmark"></i>
                     </button>
-                  </td>
-                </tr>
-
-                <!-- Row 6 -->
-                <tr class="hover:bg-gray-50">
-                  <td class="py-3 px-4">07:00</td>
-                  <td class="py-3 px-4">Annette Black</td>
-                  <td class="py-3 px-4">dianne@gmail.com</td>
-                  <td class="py-3 px-4">+325 1234 56789</td>
-                  <td class="py-3 px-4">04/14/2025</td>
-                  <td class="py-3 px-4">
-                    <span class="inline-flex items-center">
-                      <span class="w-2 h-2 rounded-full bg-pending mr-2"></span>
-                      Pending
-                    </span>
-                  </td>
-                  <td class="py-3 px-4">
-                    <button class="text-gray-500">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </button>
-                  </td>
-                </tr>
-
-                <!-- Row 7 -->
-                <tr class="hover:bg-gray-50">
-                  <td class="py-3 px-4">07:00</td>
-                  <td class="py-3 px-4">Cameron Williamson</td>
-                  <td class="py-3 px-4">dianne@gmail.com</td>
-                  <td class="py-3 px-4">+325 1234 56789</td>
-                  <td class="py-3 px-4">04/14/2025</td>
-                  <td class="py-3 px-4">
-                    <span class="inline-flex items-center">
-                      <span
-                        class="w-2 h-2 rounded-full bg-rejected mr-2"
-                      ></span>
-                      Rejected
-                    </span>
-                  </td>
-                  <td class="py-3 px-4">
-                    <button class="text-gray-500">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </button>
-                  </td>
-                </tr>
-
-                <!-- Row 8 -->
-                <tr class="hover:bg-gray-50">
-                  <td class="py-3 px-4">07:00</td>
-                  <td class="py-3 px-4">Guy Hawkins</td>
-                  <td class="py-3 px-4">dianne@gmail.com</td>
-                  <td class="py-3 px-4">+325 1234 56789</td>
-                  <td class="py-3 px-4">04/14/2025</td>
-                  <td class="py-3 px-4">
-                    <span class="inline-flex items-center">
-                      <span
-                        class="w-2 h-2 rounded-full bg-rejected mr-2"
-                      ></span>
-                      Rejected
-                    </span>
-                  </td>
-                  <td class="py-3 px-4">
-                    <button class="text-gray-500">
-                      <i class="fas fa-ellipsis-v"></i>
+                    <button
+                      class="bg-[#7F7F7F] text-white rounded-md py-2 px-3 mr-2"
+                      onclick="document.getElementById('patientModal').classList.remove('hidden')"
+                    >
+                      <i class="fa-solid fa-eye"></i>
                     </button>
                   </td>
                 </tr>
@@ -436,6 +380,288 @@
               <span class="text-sm text-gray-500 ml-2">of 34</span>
             </div>
           </div>
+
+          <!-- Modal view Patient Details -->
+          <div
+            class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-40"
+            onclick="this.classList.add('hidden')"
+            id="patientModal"
+          >
+            <!-- Modal Content -->
+            <div
+              class="bg-white rounded-lg shadow-xl max-w-4xl w-full mx-4 overflow-hidden"
+              onclick="event.stopPropagation()"
+            >
+              <!-- Patient Information Section -->
+              <div class="p-6 border-b">
+                <div
+                  class="flex flex-col md:flex-row items-start md:items-center"
+                >
+                  <!-- Profile Picture -->
+                  <div class="mr-6 mb-4 md:mb-0">
+                    <div
+                      class="w-20 h-20 rounded-full bg-gray-300 overflow-hidden"
+                    >
+                      <img
+                        src="/placeholder.svg?height=80&width=80"
+                        alt="Marvin McKinney"
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Patient Details -->
+                  <div class="flex-1">
+                    <div class="flex items-center mb-2">
+                      <h2 class="text-xl font-semibold mr-3">
+                        Marvin McKinney
+                      </h2>
+                      <div class="flex items-center">
+                        <span
+                          class="w-2.5 h-2.5 rounded-full bg-teal-500 mr-1.5"
+                        ></span>
+                        <span class="text-gray-600 text-sm">Pending</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-5 w-5 text-gray-400 ml-1"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <div class="text-sm text-gray-600 mb-1">Male • Age 32</div>
+                    <div class="text-sm text-gray-600 mb-3">
+                      Brain, Spinal Cord, and Nerve Disorders
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-1">
+                      <div class="text-sm text-gray-600">
+                        mamckinder@gmail.com
+                      </div>
+                      <div class="text-sm text-gray-600">+880 17252412313</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Appointment History Section -->
+              <div class="p-6">
+                <div class="border-b border-teal-500 inline-block pb-2 mb-6">
+                  <h3 class="text-lg font-medium text-gray-800">
+                    Appointment History
+                  </h3>
+                </div>
+
+                <!-- Appointment Table -->
+                <div class="overflow-x-auto">
+                  <table class="min-w-full">
+                    <thead>
+                      <tr class="bg-gray-50">
+                        <th
+                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          S.NO
+                        </th>
+                        <th
+                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          APPOINTMENT DATE
+                        </th>
+                        <th
+                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          STATUS
+                        </th>
+                        <th
+                          class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
+                          ACTION
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                      <!-- Appointment 1 -->
+                      <tr>
+                        <td
+                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                        >
+                          1
+                        </td>
+                        <td
+                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                        >
+                          04/14/2025 | 10:00 to 11:00
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <span
+                              class="w-2.5 h-2.5 rounded-full bg-teal-500 mr-1.5"
+                            ></span>
+                            <span class="text-gray-600">Pending</span>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <button class="text-gray-600 hover:text-gray-900">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-6 w-6"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                              />
+                            </svg>
+                          </button>
+                        </td>
+                      </tr>
+
+                      <!-- Appointment 2 -->
+                      <tr>
+                        <td
+                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                        >
+                          2
+                        </td>
+                        <td
+                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                        >
+                          04/14/2025 | 10:00 to 11:00
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <span
+                              class="w-2.5 h-2.5 rounded-full bg-green-500 mr-1.5"
+                            ></span>
+                            <span class="text-gray-600">Completed</span>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <button class="text-gray-600 hover:text-gray-900">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-6 w-6"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                              />
+                            </svg>
+                          </button>
+                        </td>
+                      </tr>
+
+                      <!-- Appointment 3 -->
+                      <tr>
+                        <td
+                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                        >
+                          3
+                        </td>
+                        <td
+                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                        >
+                          04/14/2025 | 10:00 to 11:00
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <span
+                              class="w-2.5 h-2.5 rounded-full bg-green-500 mr-1.5"
+                            ></span>
+                            <span class="text-gray-600">Completed</span>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <button class="text-gray-600 hover:text-gray-900">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-6 w-6"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                              />
+                            </svg>
+                          </button>
+                        </td>
+                      </tr>
+
+                      <!-- Appointment 4 -->
+                      <tr>
+                        <td
+                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                        >
+                          4
+                        </td>
+                        <td
+                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
+                        >
+                          04/14/2025 | 10:00 to 11:00
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <span
+                              class="w-2.5 h-2.5 rounded-full bg-teal-500 mr-1.5"
+                            ></span>
+                            <span class="text-gray-600">Pending</span>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <button class="text-gray-600 hover:text-gray-900">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-6 w-6"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                              />
+                            </svg>
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Modal Footer -->
+              <div class="bg-gray-50 px-6 py-3 flex justify-end">
+                <button
+                  class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded"
+                  onclick="document.getElementById('patientModal').classList.add('hidden')"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
     </div>
@@ -448,6 +674,14 @@
           const sidebar = document.querySelector("aside");
           sidebar.classList.toggle("hidden");
         });
+    </script>
+    <script>
+      // Close modal when clicking escape key
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          document.getElementById("patientModal").classList.add("hidden");
+        }
+      });
     </script>
   </body>
 </html>

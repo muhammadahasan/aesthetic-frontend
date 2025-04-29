@@ -42,17 +42,7 @@
         class="w-full md:w-64 bg-sidebar border-r border-gray-200 md:min-h-screen"
       >
         <div class="p-4 border-b border-gray-200">
-          <div class="flex items-center">
-            <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-2Fpce9RBmrfTJ7ctwB6nWDZRRnjbYQ.png"
-              alt="3DLifestyle Logo"
-              class="h-10 w-10"
-            />
-            <div class="ml-2">
-              <h1 class="text-primary font-bold text-xl">3DLifestyle</h1>
-              <p class="text-xs text-gray-500">Healthcare System</p>
-            </div>
-          </div>
+          <img src="../assets/images/logo.png" alt="" />
         </div>
 
         <nav class="p-4">
@@ -75,7 +65,7 @@
                 <span>Appointments</span>
               </a>
             </li>
-            <li>
+            <!-- <li>
               <a
                 href="./patients.html"
                 class="flex items-center p-2 text-gray-600 rounded hover:bg-gray-100"
@@ -92,7 +82,7 @@
                 <i class="fas fa-prescription w-6"></i>
                 <span>Prescription</span>
               </a>
-            </li>
+            </li> -->
           </ul>
         </nav>
       </aside>
@@ -151,9 +141,13 @@
                     Good morning, Dr. Tasey Omah,
                   </h2>
                   <p class="text-gray-200 text-sm">
-                    Wishing you a beautiful and productive day ahead. Your
-                    dedication to enhancing lives through your expertise and
-                    care is truly inspiring.
+                    Wishing you a beautiful and productive<br
+                      class="hidden md:block"
+                    />
+                    day ahead. Your dedication to enhancing
+                    <br class="hidden md:block" />
+                    lives through your expertise and care
+                    <br class="hidden md:block" />continues to inspire.
                   </p>
                 </div>
                 <div class="md:w-1/3 p-4 flex justify-center">
@@ -165,13 +159,26 @@
               </div>
             </div>
 
+            <!-- Avaliablility button -->
+            <div class="py-5 flex items-center">
+              <button
+                onclick="document.getElementById('availabilityModal').classList.remove('hidden')"
+                class="bg-[#2C7888] rounded-md px-6 py-3 text-white font-medium"
+              >
+                Your Avaliablility
+              </button>
+              <p class="text-sm text-gray-500 ml-4">
+                Adjust your schedule to let patients know when you're available.
+              </p>
+            </div>
+
             <!-- Metrics Cards -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <!-- Total Appointments Card -->
               <div
                 class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 flex flex-col items-center"
               >
-                <div class="bg-teal-500 rounded-full p-3 mb-4">
+                <div class="bg-[#1A989D] rounded-2xl p-3 mb-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6 text-white"
@@ -198,7 +205,7 @@
               <div
                 class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 flex flex-col items-center"
               >
-                <div class="bg-teal-500 rounded-full p-3 mb-4">
+                <div class="bg-[#1A989D] rounded-2xl p-3 mb-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-6 w-6 text-white"
@@ -225,21 +232,8 @@
               <div
                 class="bg-white rounded-lg shadow-lg border border-gray-100 p-6 flex flex-col items-center"
               >
-                <div class="bg-teal-500 rounded-full p-3 mb-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 text-white"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-                    />
-                  </svg>
+                <div class="bg-[#1A989D] rounded-2xl p-3 mb-4">
+                  <i class="fa-solid fa-circle-xmark" style="color: white"></i>
                 </div>
                 <div class="flex items-baseline mb-1">
                   <span class="text-2xl font-bold text-slate-800">202</span>
@@ -247,6 +241,296 @@
                 </div>
                 <p class="text-purple-600 font-medium">Total Rejected</p>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- avaliability modal -->
+        <div
+          class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-40"
+          onclick="this.classList.add('hidden')"
+          id="availabilityModal"
+        >
+          <!-- Modal Content -->
+          <div
+            class="bg-white rounded-md shadow-xl max-w-3xl w-full mx-4 overflow-hidden"
+            onclick="event.stopPropagation()"
+          >
+            <!-- Modal Header -->
+            <div
+              class="bg-gray-500 text-white p-4 flex justify-between items-center"
+            >
+              <h2 class="text-lg font-medium">Today's Availability</h2>
+              <button
+                class="text-white hover:text-gray-200"
+                onclick="document.getElementById('availabilityModal').classList.add('hidden')"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Today's Availability Section -->
+            <div class="p-4 bg-gray-100">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <button
+                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
+                >
+                  09:00 - 10:00 AM
+                </button>
+                <button
+                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
+                >
+                  10:00 - 11:00 AM
+                </button>
+                <button
+                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
+                >
+                  11:00 - 12:00 AM
+                </button>
+                <button
+                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
+                >
+                  12:00 - 01:00 AM
+                </button>
+                <button
+                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
+                >
+                  01:00 - 02:00 AM
+                </button>
+                <button
+                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
+                >
+                  02:00 - 03:00 AM
+                </button>
+                <button
+                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
+                >
+                  04:00 - 05:00 AM
+                </button>
+                <button
+                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
+                >
+                  05:00 - 06:00 AM
+                </button>
+              </div>
+            </div>
+
+            <!-- Add New Availability Section -->
+            <div class="bg-gray-500 text-white p-4">
+              <h3 class="font-medium">Add New Availability</h3>
+            </div>
+
+            <div class="p-4">
+              <!-- Date Selection -->
+              <div class="mb-4">
+                <p class="text-sm text-gray-600 mb-1">SELECT DATE</p>
+                <div class="mb-2">
+                  <p class="text-sm font-medium">December 2025</p>
+                </div>
+
+                <div class="flex items-center mb-2">
+                  <button class="p-1 text-gray-500 hover:text-gray-700">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 19l-7-7 7-7"
+                      />
+                    </svg>
+                  </button>
+                  <button class="p-1 text-gray-500 hover:text-gray-700">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="grid grid-cols-7 gap-1 text-center">
+                  <div class="text-xs text-gray-500 py-1">MON</div>
+                  <div class="text-xs text-gray-500 py-1">TUE</div>
+                  <div class="text-xs text-gray-500 py-1">WED</div>
+                  <div class="text-xs text-gray-500 py-1">THU</div>
+                  <div class="text-xs text-gray-500 py-1">FRI</div>
+                  <div class="text-xs text-gray-500 py-1">SAT</div>
+                  <div class="text-xs text-gray-500 py-1">SUN</div>
+
+                  <button
+                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center hover:bg-gray-200"
+                  >
+                    1
+                  </button>
+                  <button
+                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center hover:bg-gray-200"
+                  >
+                    2
+                  </button>
+                  <button
+                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center hover:bg-gray-200"
+                  >
+                    3
+                  </button>
+                  <button
+                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center hover:bg-gray-200"
+                  >
+                    4
+                  </button>
+                  <button
+                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center bg-blue-600 text-white"
+                  >
+                    5
+                  </button>
+                  <button
+                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center hover:bg-gray-200"
+                  >
+                    6
+                  </button>
+                  <button
+                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center hover:bg-gray-200"
+                  >
+                    7
+                  </button>
+                  <button
+                    class="rounded-full w-8 h-8 mx-auto flex items-center justify-center hover:bg-gray-200"
+                  >
+                    8
+                  </button>
+                </div>
+              </div>
+
+              <!-- Time Selection -->
+              <div class="mb-4">
+                <p class="text-sm text-gray-600 mb-2">SELECT TIME</p>
+
+                <div class="grid grid-cols-2 gap-4">
+                  <!-- start time -->
+                  <div>
+                    <p class="text-xs text-gray-500 mb-2">START TIME</p>
+                    <div class="grid grid-cols-2 gap-2">
+                      <button
+                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
+                      >
+                        09:00 AM
+                      </button>
+                      <button
+                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
+                      >
+                        10:00 AM
+                      </button>
+                      <button
+                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
+                      >
+                        11:00 AM
+                      </button>
+                      <button
+                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
+                      >
+                        12:00 PM
+                      </button>
+                      <button
+                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
+                      >
+                        01:00 PM
+                      </button>
+                      <button
+                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
+                      >
+                        02:00 PM
+                      </button>
+                    </div>
+                  </div>
+                  <!-- end time -->
+                  <div>
+                    <p class="text-xs text-gray-500 mb-2">END TIME</p>
+                    <div class="grid grid-cols-2 gap-2">
+                      <button
+                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
+                      >
+                        10:00 AM
+                      </button>
+                      <button
+                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
+                      >
+                        11:00 AM
+                      </button>
+                      <button
+                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
+                      >
+                        12:00 PM
+                      </button>
+                      <button
+                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
+                      >
+                        01:00 PM
+                      </button>
+                      <button
+                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
+                      >
+                        02:00 PM
+                      </button>
+                      <button
+                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
+                      >
+                        03:00 PM
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Add Button -->
+              <div class="flex justify-center mb-4">
+                <button
+                  class="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-8 rounded"
+                >
+                  ADD
+                </button>
+              </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="bg-gray-100 p-4 flex justify-end space-x-2">
+              <button
+                class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-6 rounded"
+                onclick="document.getElementById('availabilityModal').classList.add('hidden')"
+              >
+                Cancel
+              </button>
+              <button
+                class="bg-[#405570] hover:bg-[#405570] text-white font-medium py-2 px-6 rounded"
+              >
+                Save
+              </button>
             </div>
           </div>
         </div>
@@ -261,6 +545,14 @@
           const sidebar = document.querySelector("aside");
           sidebar.classList.toggle("hidden");
         });
+    </script>
+    <script>
+      // Close modal when clicking escape key
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          document.getElementById("availabilityModal").classList.add("hidden");
+        }
+      });
     </script>
   </body>
 </html>
