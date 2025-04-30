@@ -161,13 +161,14 @@
           <!-- Appointments List -->
           <h2 class="text-lg font-semibold mb-4">Appointments List</h2>
 
+          <!-- Appointments Table -->
           <div class="overflow-x-auto">
             <table class="min-w-full bg-white">
               <thead>
                 <tr
                   class="text-left text-xs text-gray-500 uppercase tracking-wider"
                 >
-                  <th class="py-3 px-4 font-medium">S.NO</th>
+                  <th class="py-3 px-4 font-medium">Slot</th>
                   <th class="py-3 px-4 font-medium">Patient</th>
                   <th class="py-3 px-4 font-medium">Email</th>
                   <th class="py-3 px-4 font-medium">Date</th>
@@ -175,141 +176,7 @@
                   <th class="py-3 px-4 font-medium">Action</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-gray-200">
-                <!-- Row 1 -->
-                <tr class="hover:bg-gray-50">
-                  <td class="py-3 px-4">07:00</td>
-                  <td class="py-3 px-4">Dianne Russell</td>
-                  <td class="py-3 px-4">dianne@gmail.com</td>
-                  <td class="py-3 px-4">04/14/2025</td>
-                  <td class="py-3 px-4">
-                    <span class="inline-flex items-center">
-                      <span class="w-2 h-2 rounded-full bg-pending mr-2"></span>
-                      Pending
-                    </span>
-                  </td>
-                  <td class="py-3 px-4">
-                    <button
-                      class="bg-[#158E72] text-white rounded-md py-2 px-3 mr-2"
-                    >
-                      <i class="fa-solid fa-check"></i>
-                    </button>
-                    <button
-                      class="bg-[#ED1D4E] text-white rounded-md py-2 px-3 mr-2"
-                    >
-                      <i class="fa-solid fa-xmark"></i>
-                    </button>
-                    <button
-                      class="bg-[#7F7F7F] text-white rounded-md py-2 px-3 mr-2"
-                      onclick="document.getElementById('patientModal').classList.remove('hidden')"
-                    >
-                      <i class="fa-solid fa-eye"></i>
-                    </button>
-                  </td>
-                </tr>
-
-                <!-- Row 2 -->
-                <tr class="hover:bg-gray-50">
-                  <td class="py-3 px-4">07:00</td>
-                  <td class="py-3 px-4">Bessie Cooper</td>
-                  <td class="py-3 px-4">dianne@gmail.com</td>
-                  <td class="py-3 px-4">04/14/2025</td>
-                  <td class="py-3 px-4">
-                    <span class="inline-flex items-center">
-                      <span
-                        class="w-2 h-2 rounded-full bg-rejected mr-2"
-                      ></span>
-                      Rejected
-                    </span>
-                  </td>
-                  <td class="py-3 px-4">
-                    <button
-                      class="bg-[#158E72] text-white rounded-md py-2 px-3 mr-2"
-                    >
-                      <i class="fa-solid fa-check"></i>
-                    </button>
-                    <button
-                      class="bg-[#ED1D4E] text-white rounded-md py-2 px-3 mr-2"
-                    >
-                      <i class="fa-solid fa-xmark"></i>
-                    </button>
-                    <button
-                      class="bg-[#7F7F7F] text-white rounded-md py-2 px-3 mr-2"
-                      onclick="document.getElementById('patientModal').classList.remove('hidden')"
-                    >
-                      <i class="fa-solid fa-eye"></i>
-                    </button>
-                  </td>
-                </tr>
-
-                <!-- Row 3 -->
-                <tr class="hover:bg-gray-50">
-                  <td class="py-3 px-4">07:00</td>
-                  <td class="py-3 px-4">Marvin McKinney</td>
-                  <td class="py-3 px-4">dianne@gmail.com</td>
-                  <td class="py-3 px-4">04/14/2025</td>
-                  <td class="py-3 px-4">
-                    <span class="inline-flex items-center">
-                      <span
-                        class="w-2 h-2 rounded-full bg-completed mr-2"
-                      ></span>
-                      Completed
-                    </span>
-                  </td>
-                  <td class="py-3 px-4">
-                    <button
-                      class="bg-[#158E72] text-white rounded-md py-2 px-3 mr-2"
-                    >
-                      <i class="fa-solid fa-check"></i>
-                    </button>
-                    <button
-                      class="bg-[#ED1D4E66] text-white rounded-md py-2 px-3 mr-2"
-                    >
-                      <i class="fa-solid fa-xmark"></i>
-                    </button>
-                    <button
-                      class="bg-[#7F7F7F] text-white rounded-md py-2 px-3 mr-2"
-                      onclick="document.getElementById('patientModal').classList.remove('hidden')"
-                    >
-                      <i class="fa-solid fa-eye"></i>
-                    </button>
-                  </td>
-                </tr>
-
-                <!-- Row 4 -->
-                <tr class="hover:bg-gray-50">
-                  <td class="py-3 px-4">07:00</td>
-                  <td class="py-3 px-4">Esther Howard</td>
-                  <td class="py-3 px-4">dianne@gmail.com</td>
-                  <td class="py-3 px-4">04/14/2025</td>
-                  <td class="py-3 px-4">
-                    <span class="inline-flex items-center">
-                      <span
-                        class="w-2 h-2 rounded-full bg-completed mr-2"
-                      ></span>
-                      Completed
-                    </span>
-                  </td>
-                  <td class="py-3 px-4">
-                    <button
-                      class="bg-[#158E7266] text-white rounded-md py-2 px-3 mr-2"
-                    >
-                      <i class="fa-solid fa-check"></i>
-                    </button>
-                    <button
-                      class="bg-[#ED1D4E] text-white rounded-md py-2 px-3 mr-2"
-                    >
-                      <i class="fa-solid fa-xmark"></i>
-                    </button>
-                    <button
-                      class="bg-[#7F7F7F] text-white rounded-md py-2 px-3 mr-2"
-                      onclick="document.getElementById('patientModal').classList.remove('hidden')"
-                    >
-                      <i class="fa-solid fa-eye"></i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
+              <tbody class="divide-y divide-gray-200"></tbody>
             </table>
           </div>
 
@@ -323,53 +190,20 @@
               >
                 <i class="fas fa-chevron-left mr-1"></i> Previous
               </button>
-              <button
-                class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-sm"
-              >
-                1
-              </button>
-              <button
-                class="w-8 h-8 flex items-center justify-center bg-primary text-white border border-primary rounded text-sm"
-              >
-                2
-              </button>
-              <button
-                class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-sm"
-              >
-                3
-              </button>
-              <button
-                class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-sm"
-              >
-                4
-              </button>
-              <button
-                class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-sm"
-              >
-                5
-              </button>
-              <span class="px-2">...</span>
-              <button
-                class="w-8 h-8 flex items-center justify-center border border-gray-300 rounded text-sm"
-              >
-                10
-              </button>
+              <!-- Dynamic page buttons will be inserted here -->
               <button
                 class="px-3 py-1 border border-gray-300 rounded text-sm flex items-center"
               >
                 Next <i class="fas fa-chevron-right ml-1"></i>
               </button>
             </div>
-
             <div class="flex items-center">
               <span class="text-sm text-gray-500 mr-2">Page</span>
               <div class="relative inline-block w-16">
                 <select
                   class="w-full appearance-none border border-gray-300 rounded py-1 pl-2 pr-6 bg-white"
                 >
-                  <option>2</option>
                   <option>1</option>
-                  <option>3</option>
                 </select>
                 <div
                   class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
@@ -377,7 +211,24 @@
                   <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
                 </div>
               </div>
-              <span class="text-sm text-gray-500 ml-2">of 34</span>
+              <span class="text-sm text-gray-500 ml-2">of 1</span>
+            </div>
+          </div>
+
+          <!-- Patient Modal (Hidden by Default) -->
+          <div
+            id="patientModal"
+            class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden"
+          >
+            <div class="bg-white p-6 rounded-lg w-full max-w-md">
+              <h2 class="text-lg font-medium mb-4">Appointment Details</h2>
+              <div id="modalContent"></div>
+              <button
+                class="mt-4 bg-gray-500 text-white rounded-md py-2 px-4"
+                onclick="document.getElementById('patientModal').classList.add('hidden')"
+              >
+                Close
+              </button>
             </div>
           </div>
 
@@ -858,7 +709,10 @@
         </div>
       </main>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../env.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/appointments.js"></script>
     <script>
       // Mobile menu toggle
       document
