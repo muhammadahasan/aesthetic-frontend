@@ -47,3 +47,19 @@ body {
     rgba(17, 24, 39, 0.9) 100%
   );
 }
+/* Status colors */
+.bg-pending {
+  background-color: #1eabb8; /* Teal for pending */
+}
+.bg-rejected {
+  background-color: #b81e42; /* Red for rejected */
+}
+.bg-booked {
+  background-color: #168bd9; /* Blue for booked */
+}
+.bg-completed {
+  background-color: #1acf65; /* Green for completed */
+}
+.bg-gray-500 {
+  background-color: #6b7280; /* Fallback for unknown status */
+}

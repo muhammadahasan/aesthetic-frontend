@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>3DLifestyle - Medical Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -162,7 +163,7 @@
           <h2 class="text-lg font-semibold mb-4">Appointments List</h2>
 
           <!-- Appointments Table -->
-          <div class="overflow-x-auto">
+          <div class="h-[55vh] overflow-auto">
             <table class="min-w-full bg-white">
               <thead>
                 <tr
@@ -176,7 +177,10 @@
                   <th class="py-3 px-4 font-medium">Action</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-gray-200"></tbody>
+              <tbody
+                id="main-table-tbody"
+                class="divide-y divide-gray-200"
+              ></tbody>
             </table>
           </div>
 
@@ -215,28 +219,11 @@
             </div>
           </div>
 
-          <!-- Patient Modal (Hidden by Default) -->
-          <div
-            id="patientModal"
-            class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden"
-          >
-            <div class="bg-white p-6 rounded-lg w-full max-w-md">
-              <h2 class="text-lg font-medium mb-4">Appointment Details</h2>
-              <div id="modalContent"></div>
-              <button
-                class="mt-4 bg-gray-500 text-white rounded-md py-2 px-4"
-                onclick="document.getElementById('patientModal').classList.add('hidden')"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-
           <!-- Modal view Patient Details -->
           <div
             class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-40"
             onclick="this.classList.add('hidden')"
-            id="patientModal"
+            id="patientDetailsModal"
           >
             <!-- Modal Content -->
             <div
@@ -312,7 +299,7 @@
 
                 <!-- Appointment Table -->
                 <div class="overflow-x-auto">
-                  <table class="min-w-full">
+                  <table class="w-full">
                     <thead>
                       <tr class="bg-gray-50">
                         <th
@@ -509,7 +496,7 @@
               <div class="bg-gray-50 px-6 py-3 flex justify-end">
                 <button
                   class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded"
-                  onclick="document.getElementById('patientModal').classList.add('hidden')"
+                  onclick="document.getElementById('patientdetailsModal').classList.add('hidden')"
                 >
                   Close
                 </button>
@@ -722,14 +709,14 @@
           sidebar.classList.toggle("hidden");
         });
     </script>
-    <script>
+    <!-- <script>
       // Close modal when clicking escape key
       document.addEventListener("keydown", function (event) {
         if (event.key === "Escape") {
           document.getElementById("patientModal").classList.add("hidden");
         }
       });
-    </script>
+    </script> -->
     <script>
       // Modal functions
       function openModal() {
