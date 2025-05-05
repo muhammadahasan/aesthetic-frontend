@@ -96,7 +96,7 @@
         <div class="flex justify-between items-center">
           <a href="#" class="flex items-center">
             <!-- <img src="logo.png" alt="3D Lifestyle Logo" class="h-14" /> -->
-            <img src="../assets/images/logo.jpg" class="h-14" />
+            <img src="../assets/images/logo.png" class="h-14" />
           </a>
 
           <!-- Mobile menu button -->
@@ -127,12 +127,9 @@
           <div class="hidden md:flex items-center space-x-4">
             <a
               href="/"
-              class="text-primary text-sm font-medium px-3 py-2 relative group"
+              class="text-[#7B8693] text-sm hover:text-primary font-medium px-3 py-2"
             >
               HOME
-              <span
-                class="absolute bottom-0 left-3 w-[calc(100%-24px)] h-0.5 bg-primary"
-              ></span>
             </a>
             <a
               href="#"
@@ -141,9 +138,12 @@
             >
             <a
               href="./appointment.html"
-              class="text-[#7B8693] text-sm hover:text-primary font-medium px-3 py-2"
-              >APPOINTMENT</a
-            >
+              class="text-primary text-sm font-medium px-3 py-2 relative group"
+              >APPOINTMENT
+              <span
+                class="absolute bottom-0 left-3 w-[calc(100%-24px)] h-0.5 bg-primary"
+              ></span
+            ></a>
             <a
               href="#"
               class="text-[#7B8693] text-sm hover:text-primary font-medium px-3 py-2"
@@ -264,32 +264,27 @@
               <div class="grid grid-cols-2 gap-4 mb-4">
                 <div class="relative">
                   <input
-                    type="text"
+                    type="date"
                     placeholder="Select Date"
-                    class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500 pr-10"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
                   />
-                  <div
-                    class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400"
-                  >
-                    <i class="fas fa-calendar"></i>
-                  </div>
                 </div>
                 <div class="relative">
                   <select
                     class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500 appearance-none"
                   >
                     <option value="" disabled selected>Select Slots</option>
-                    <option value="9:00">9:00 AM</option>
-                    <option value="10:00">10:00 AM</option>
-                    <option value="11:00">11:00 AM</option>
-                    <option value="12:00">12:00 PM</option>
-                    <option value="13:00">1:00 PM</option>
-                    <option value="14:00">2:00 PM</option>
-                    <option value="15:00">3:00 PM</option>
-                    <option value="16:00">4:00 PM</option>
-                    <option value="17:00">5:00 PM</option>
-                    <option value="18:00">6:00 PM</option>
-                    <option value="19:00">7:00 PM</option>
+                    <option value="9:00-10:00">9:00-10:00</option>
+                    <option value="10:00-11:00">10:00-11:00</option>
+                    <option value="11:00-12:00">11:00-12:00</option>
+                    <option value="12:00-13:00">12:00-13:00</option>
+                    <option value="13:00-14:00">13:00-14:00</option>
+                    <option value="14:00-15:00">14:00-15:00</option>
+                    <option value="15:00-16:00">15:00-16:00</option>
+                    <option value="16:00-17:00">16:00-17:00</option>
+                    <option value="17:00-18:00">17:00-18:00</option>
+                    <option value="18:00-19:00">18:00-19:00</option>
+                    <option value="19:00-20:00">19:00-20:00</option>
                   </select>
                   <div
                     class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-gray-400"
@@ -685,16 +680,13 @@
               Quick Links
             </p>
             <div class="flex flex-col gap-4">
-              <a
-                href="/"
-                class="text-[#1A989D] text-sm hover:text-primary cursor-pointer"
-              >
+              <a href="/" class="text-sm hover:text-primary cursor-pointer">
                 Home
               </a>
               <a class="text-sm hover:text-primary cursor-pointer">Services</a>
               <a
                 href="./appointment.html"
-                class="text-sm hover:text-primary cursor-pointer"
+                class="text-[#1A989D] text-sm hover:text-primary cursor-pointer"
                 >Appointment</a
               >
               <a class="text-sm hover:text-primary cursor-pointer">Media</a>
@@ -776,6 +768,8 @@
     </footer>
 
     <!-- JavaScript for mobile menu toggle -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../env.js"></script>
     <script>
       document
         .getElementById("mobile-menu-button")
@@ -783,6 +777,56 @@
           const menu = document.getElementById("mobile-menu");
           menu.classList.toggle("hidden");
         });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("form").submit(function (e) {
+          e.preventDefault();
+
+          // Collect form data
+          const appointmentData = {
+            doctorId: "68120aba8af2c0b4edeb5a5a", // Hardcoded as requested
+            patientName: $('input[type="text"]').val(),
+            patientEmail: $('input[type="email"]').val(),
+            patientPhone: $('input[type="tel"]').val(),
+            date: $('input[type="date"]').val(),
+            slot: $("select:first").val(),
+            service: $("select:last").val(),
+            medicalHistory: $("textarea").val(),
+          };
+
+          // Simple validation
+          if (!appointmentData.date || !appointmentData.slot) {
+            alert("Please select date and time slot");
+            return;
+          }
+
+          // Set button to loading state
+          const $btn = $('button[type="submit"]');
+          $btn.text("Booking...").prop("disabled", true);
+
+          // Make API call
+          $.ajax({
+            url: `${window.appConfig.API_BASE_URL}/patient/book-appointment`,
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(appointmentData),
+            success: function (response) {
+              alert("Appointment booked successfully!");
+              $("form")[0].reset(); // Reset form
+            },
+            error: function (xhr) {
+              const errorMsg =
+                xhr.responseJSON?.message ||
+                "Booking failed. Please try again.";
+              alert(errorMsg);
+            },
+            complete: function () {
+              $btn.text("Send Message").prop("disabled", false);
+            },
+          });
+        });
+      });
     </script>
   </body>
 </html>

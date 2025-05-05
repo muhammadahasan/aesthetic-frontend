@@ -9,6 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <link rel="stylesheet" href="../style.css" />
     <script>
       tailwind.config = {
         theme: {
@@ -34,6 +35,7 @@
         },
       };
     </script>
+    <style></style>
   </head>
   <body class="bg-gray-50 font-sans">
     <div class="flex flex-col md:flex-row min-h-screen">
@@ -115,8 +117,12 @@
                 class="h-10 w-10 rounded-full border-2 border-white"
               />
               <div class="ml-2 hidden md:block">
-                <h3 class="font-medium text-sm">Dr Amirul Haque</h3>
-                <p class="text-xs text-gray-500">Urologist</p>
+                <h3 id="doctor-name" class="font-medium text-sm">
+                  Dr Amirul Haque
+                </h3>
+                <p id="doctor-specialization" class="text-xs text-gray-500">
+                  Urologist
+                </p>
               </div>
             </div>
             <button class="ml-2 text-gray-500">
@@ -138,7 +144,7 @@
               <div class="flex flex-col md:flex-row items-center">
                 <div class="p-6 md:w-2/3">
                   <h2 class="text-white text-lg font-medium mb-2">
-                    Good morning, Dr. Tasey Omah,
+                    Good morning, <span id="doctor-name1">Dr. Tasey Omah</span>,
                   </h2>
                   <p class="text-gray-200 text-sm">
                     Wishing you a beautiful and productive<br
@@ -195,7 +201,7 @@
                   </svg>
                 </div>
                 <div class="flex items-baseline mb-1">
-                  <span class="text-2xl font-bold text-slate-800">202</span>
+                  <span class="text-2xl font-bold text-slate-800">0</span>
                   <span class="text-sm text-gray-400 ml-1">/500</span>
                 </div>
                 <p class="text-purple-600 font-medium">Total Appointments</p>
@@ -253,14 +259,20 @@
         >
           <!-- Modal Content -->
           <div
-            class="bg-white rounded-md shadow-xl max-w-3xl w-full mx-4 overflow-hidden"
+            class="bg-white h-[70vh] rounded-md shadow-xl max-w-3xl w-full mx-4 overflow-auto"
             onclick="event.stopPropagation()"
           >
             <!-- Modal Header -->
             <div
               class="bg-gray-500 text-white p-4 flex justify-between items-center"
             >
-              <h2 class="text-lg font-medium">Today's Availability</h2>
+              <div class="flex items-center gap-4">
+                <h2 class="text-lg font-medium">Selected Date Availability</h2>
+                <span
+                  id="selectedDateDisplay"
+                  class="text-sm bg-white text-gray-700 px-2 py-1 rounded"
+                ></span>
+              </div>
               <button
                 class="text-white hover:text-gray-200"
                 onclick="document.getElementById('availabilityModal').classList.add('hidden')"
@@ -284,47 +296,10 @@
 
             <!-- Today's Availability Section -->
             <div class="p-4 bg-gray-100">
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                <button
-                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
-                >
-                  09:00 - 10:00 AM
-                </button>
-                <button
-                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
-                >
-                  10:00 - 11:00 AM
-                </button>
-                <button
-                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
-                >
-                  11:00 - 12:00 AM
-                </button>
-                <button
-                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
-                >
-                  12:00 - 01:00 AM
-                </button>
-                <button
-                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
-                >
-                  01:00 - 02:00 AM
-                </button>
-                <button
-                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
-                >
-                  02:00 - 03:00 AM
-                </button>
-                <button
-                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
-                >
-                  04:00 - 05:00 AM
-                </button>
-                <button
-                  class="bg-[#405570] hover:bg-blue-800 text-white text-sm py-2 px-3 rounded"
-                >
-                  05:00 - 06:00 AM
-                </button>
+              <div
+                class="grid grid-cols-2 sm:grid-cols-4 gap-2 slots-container"
+              >
+                <!-- Slots will render here -->
               </div>
             </div>
 
@@ -333,110 +308,48 @@
               <h3 class="font-medium">Add New Availability</h3>
             </div>
 
+            <!-- HTML with correct data attributes -->
             <div class="p-4">
               <!-- date selection -->
               <div class="flex flex-col gap-5 mb-4">
                 <p class="text-sm text-gray-600 mb-2">SELECT DATE</p>
                 <div class="flex items-center gap-4">
+                  <!-- Date Input -->
                   <input
-                    type="date"
                     class="border rounded-md py-2 px-3 text-sm w-full"
+                    type="date"
+                    data-availability-date
                   />
                   <button
                     class="bg-[#405570] hover:bg-blue-800 text-white font-medium py-2 px-4 rounded"
+                    data-today-btn
                   >
                     Today
                   </button>
                 </div>
               </div>
 
-              <!-- Time Selection -->
-              <div class="mb-4">
-                <p class="text-sm text-gray-600 mb-2">SELECT TIME</p>
-
-                <div class="grid grid-cols-2 gap-4">
-                  <!-- start time -->
-                  <div>
-                    <p class="text-xs text-gray-500 mb-2">START TIME</p>
-                    <div class="grid grid-cols-2 gap-2">
-                      <button
-                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
-                      >
-                        09:00 AM
-                      </button>
-                      <button
-                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
-                      >
-                        10:00 AM
-                      </button>
-                      <button
-                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
-                      >
-                        11:00 AM
-                      </button>
-                      <button
-                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
-                      >
-                        12:00 PM
-                      </button>
-                      <button
-                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
-                      >
-                        01:00 PM
-                      </button>
-                      <button
-                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
-                      >
-                        02:00 PM
-                      </button>
-                    </div>
+              <!-- Availability Section -->
+              <div class="p-4 bg-gray-100 rounded">
+                <div class="mb-4">
+                  <div class="flex items-center gap-2 mb-2">
+                    <p class="text-sm text-gray-600">AVAILABILITY FOR:</p>
+                    <span data-date-display class="font-medium"></span>
                   </div>
-                  <!-- end time -->
-                  <div>
-                    <p class="text-xs text-gray-500 mb-2">END TIME</p>
-                    <div class="grid grid-cols-2 gap-2">
-                      <button
-                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
-                      >
-                        10:00 AM
-                      </button>
-                      <button
-                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
-                      >
-                        11:00 AM
-                      </button>
-                      <button
-                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
-                      >
-                        12:00 PM
-                      </button>
-                      <button
-                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
-                      >
-                        01:00 PM
-                      </button>
-                      <button
-                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
-                      >
-                        02:00 PM
-                      </button>
-                      <button
-                        class="border rounded-md py-1 px-2 text-sm hover:bg-gray-100"
-                      >
-                        03:00 PM
-                      </button>
-                    </div>
-                  </div>
+                  <div
+                    data-slot-grid
+                    class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-4"
+                  ></div>
                 </div>
-              </div>
 
-              <!-- Add Button -->
-              <div class="flex justify-center mb-4">
-                <button
-                  class="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-8 rounded"
-                >
-                  ADD
-                </button>
+                <div class="flex justify-center mt-6">
+                  <button
+                    data-add-btn
+                    class="bg-[#405570] hover:bg-blue-700 text-white font-medium py-2 px-8 rounded"
+                  >
+                    SAVE CHANGES
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -462,6 +375,7 @@
     <script src="../env.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/overview.js"></script>
+    <script src="../js/add-availability.js"></script>
     <script>
       // Mobile menu toggle
       document
@@ -479,5 +393,6 @@
         }
       });
     </script>
+    <script></script>
   </body>
 </html>

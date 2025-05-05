@@ -63,3 +63,74 @@ body {
 .bg-gray-500 {
   background-color: #6b7280; /* Fallback for unknown status */
 }
+.delete-slot {
+  display: none;
+  transition: all 0.2s;
+}
+.relative:hover .delete-slot {
+  display: flex;
+}
+.slot-item:hover .delete-slot {
+  opacity: 1 !important;
+}
+
+/* styles.css - Add these styles to your existing CSS */
+
+/* Slot grid styling */
+[data-slot-grid] {
+  min-height: 200px;
+}
+
+/* Animation for loading spinner */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Available slot styling */
+.slot-btn {
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.slot-btn.available {
+  border: 1px solid #e2e8f0;
+}
+
+.slot-btn.booked {
+  position: relative;
+}
+
+/* Delete button hover effect */
+.delete-slot {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.delete-slot:hover {
+  transform: scale(1.2);
+}
+
+/* Toast animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+#toast-container > div {
+  animation: slideIn 0.3s ease-out forwards;
+}

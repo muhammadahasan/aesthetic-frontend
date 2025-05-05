@@ -1160,7 +1160,7 @@
 
           <!-- Right Column - Contact Form -->
           <div class="w-full md:w-1/2 bg-white p-8 rounded-lg shadow-lg">
-            <form>
+            <form class="contact-form">
               <div class="mb-4">
                 <input
                   type="text"
@@ -1353,9 +1353,49 @@
           menu.classList.toggle("hidden");
         });
     </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../env.js"></script>
     <script src="./js/home.js"></script>
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="./js/map.js"></script>
+    <script>
+      // Contact Form
+      $(".contact-form").submit(function (e) {
+        e.preventDefault();
+
+        const contactData = {
+          name: $(this).find('input[type="text"]').val(),
+          email: $(this).find('input[type="email"]').val(),
+          phoneNumber: $(this).find('input[type="tel"]').val(),
+          message: $(this).find("textarea").val(),
+        };
+
+        if (!contactData.name || !contactData.email || !contactData.message) {
+          alert("Please fill in all required fields");
+          return;
+        }
+
+        const $btn = $(this).find('button[type="submit"]');
+        $btn.text("Sending...").prop("disabled", true);
+
+        $.ajax({
+          url: `${window.appConfig.API_BASE_URL}/contact-us`,
+          method: "POST",
+          contentType: "application/json",
+          data: JSON.stringify(contactData),
+          success: function () {
+            alert("Message sent successfully!");
+            $(".contact-form")[0].reset();
+          },
+          error: function (xhr) {
+            alert(xhr.responseJSON?.message || "Failed to send message.");
+          },
+          complete: function () {
+            $btn.text("Send Message").prop("disabled", false);
+          },
+        });
+      });
+    </script>
   </body>
 </html>
