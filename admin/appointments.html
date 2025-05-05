@@ -121,36 +121,7 @@
         <div class="p-4 md:p-6">
           <!-- Filters -->
           <div class="flex flex-col md:flex-row gap-4 mb-6">
-            <div class="relative flex-1 md:max-w-xs">
-              <select
-                class="w-full p-2 pr-8 border border-gray-300 rounded bg-white appearance-none"
-              >
-                <option>Select Status</option>
-                <option>Pending</option>
-                <option>Completed</option>
-                <option>Rejected</option>
-              </select>
-              <div
-                class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none"
-              >
-                <i class="fas fa-chevron-down text-gray-400"></i>
-              </div>
-            </div>
-
-            <div class="relative flex-1 md:max-w-xs">
-              <div class="flex border border-gray-300 rounded bg-white">
-                <input
-                  type="text"
-                  placeholder="Select Date"
-                  class="w-full p-2 outline-none"
-                />
-                <button class="px-2 text-gray-400">
-                  <i class="far fa-calendar"></i>
-                </button>
-              </div>
-            </div>
-
-            <div class="flex-1">
+            <div class="w-full md:w-1/3">
               <input
                 type="text"
                 placeholder="Search by patient's name or email"
@@ -242,7 +213,7 @@
                     >
                       <img
                         src="/placeholder.svg?height=80&width=80"
-                        alt="Marvin McKinney"
+                        alt="Patient Profile"
                         class="w-full h-full object-cover"
                       />
                     </div>
@@ -251,14 +222,16 @@
                   <!-- Patient Details -->
                   <div class="flex-1">
                     <div class="flex items-center mb-2">
-                      <h2 class="text-xl font-semibold mr-3">
+                      <h2 id="patient-name" class="text-xl font-semibold mr-3">
                         Marvin McKinney
                       </h2>
                       <div class="flex items-center">
                         <span
                           class="w-2.5 h-2.5 rounded-full bg-teal-500 mr-1.5"
                         ></span>
-                        <span class="text-gray-600 text-sm">Pending</span>
+                        <span id="patient-status" class="text-gray-600 text-sm"
+                          >Pending</span
+                        >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           class="h-5 w-5 text-gray-400 ml-1"
@@ -274,16 +247,26 @@
                       </div>
                     </div>
 
-                    <div class="text-sm text-gray-600 mb-1">Male • Age 32</div>
-                    <div class="text-sm text-gray-600 mb-3">
+                    <div
+                      id="patient-gender-age"
+                      class="text-sm text-gray-600 mb-1"
+                    >
+                      Male • Age 32
+                    </div>
+                    <div
+                      id="patient-medical-history"
+                      class="text-sm text-gray-600 mb-3"
+                    >
                       Brain, Spinal Cord, and Nerve Disorders
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-1">
-                      <div class="text-sm text-gray-600">
+                      <div id="patient-email" class="text-sm text-gray-600">
                         mamckinder@gmail.com
                       </div>
-                      <div class="text-sm text-gray-600">+880 17252412313</div>
+                      <div id="patient-phone" class="text-sm text-gray-600">
+                        +880 17252412313
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -367,126 +350,6 @@
                           </button>
                         </td>
                       </tr>
-
-                      <!-- Appointment 2 -->
-                      <tr>
-                        <td
-                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                        >
-                          2
-                        </td>
-                        <td
-                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                        >
-                          04/14/2025 | 10:00 to 11:00
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <div class="flex items-center">
-                            <span
-                              class="w-2.5 h-2.5 rounded-full bg-green-500 mr-1.5"
-                            ></span>
-                            <span class="text-gray-600">Completed</span>
-                          </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <button class="text-gray-600 hover:text-gray-900">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="h-6 w-6"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                              />
-                            </svg>
-                          </button>
-                        </td>
-                      </tr>
-
-                      <!-- Appointment 3 -->
-                      <tr>
-                        <td
-                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                        >
-                          3
-                        </td>
-                        <td
-                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                        >
-                          04/14/2025 | 10:00 to 11:00
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <div class="flex items-center">
-                            <span
-                              class="w-2.5 h-2.5 rounded-full bg-green-500 mr-1.5"
-                            ></span>
-                            <span class="text-gray-600">Completed</span>
-                          </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <button class="text-gray-600 hover:text-gray-900">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="h-6 w-6"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                              />
-                            </svg>
-                          </button>
-                        </td>
-                      </tr>
-
-                      <!-- Appointment 4 -->
-                      <tr>
-                        <td
-                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                        >
-                          4
-                        </td>
-                        <td
-                          class="px-6 py-4 whitespace-nowrap text-sm text-gray-900"
-                        >
-                          04/14/2025 | 10:00 to 11:00
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <div class="flex items-center">
-                            <span
-                              class="w-2.5 h-2.5 rounded-full bg-teal-500 mr-1.5"
-                            ></span>
-                            <span class="text-gray-600">Pending</span>
-                          </div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                          <button class="text-gray-600 hover:text-gray-900">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              class="h-6 w-6"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                              />
-                            </svg>
-                          </button>
-                        </td>
-                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -496,7 +359,7 @@
               <div class="bg-gray-50 px-6 py-3 flex justify-end">
                 <button
                   class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded"
-                  onclick="document.getElementById('patientdetailsModal').classList.add('hidden')"
+                  onclick="document.getElementById('patientDetailsModal').classList.add('hidden')"
                 >
                   Close
                 </button>
