@@ -370,11 +370,13 @@
           <!-- Replace your current prescription modal with this updated version -->
           <div
             id="prescriptionModal"
-            class="fixed inset-0 bg-black bg-opacity-50 block z-40"
+            class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"
           >
             <div class="flex items-center justify-center h-full p-4">
               <!-- Modal Content -->
-              <div class="bg-white rounded-lg shadow-xl max-w-3xl w-full mx-4">
+              <div
+                class="bg-white rounded-lg shadow-xl max-w-3xl w-full mx-4 h-[80vh] overflow-auto"
+              >
                 <!-- Prescription Content -->
                 <div class="p-6">
                   <!-- Rx Icon and Title -->
@@ -408,11 +410,16 @@
                             Dosage
                           </th>
 
-                          <!-- <th
+                          <th
                             class="px-4 py-3 text-left text-sm font-medium text-gray-700"
                           >
                             Duration
-                          </th> -->
+                          </th>
+                          <th
+                            class="px-4 py-3 text-left text-sm font-medium text-gray-700"
+                          >
+                            Directions
+                          </th>
                         </tr>
                       </thead>
                       <tbody id="drugTableBody">
@@ -423,6 +430,97 @@
 
                   <!-- Drugs Form -->
                   <div></div>
+
+                  <!-- Add Prescription Form -->
+                  <form
+                    id="addPrescriptionForm"
+                    class="bg-gray-20 p-3 mt-3 mb-6 border border-gray-200 rounded-lg shadow-sm"
+                  >
+                    <p class="text-center text-2xl font-bold py-2">
+                      Add Prescription
+                    </p>
+                    <div id="prescriptionFields">
+                      <div
+                        class="grid grid-cols-1 md:grid-cols-2 gap-4 prescription-field-set mb-4"
+                      >
+                        <div>
+                          <label
+                            for="medicineName"
+                            class="block text-sm font-medium text-gray-700"
+                            >Medicine Name</label
+                          >
+                          <input
+                            type="text"
+                            class="medicineName mt-1 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label
+                            for="duration"
+                            class="block text-sm font-medium text-gray-700"
+                            >Duration</label
+                          >
+                          <input
+                            type="text"
+                            class="duration mt-1 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
+                          />
+                        </div>
+                        <div>
+                          <label
+                            for="dosage"
+                            class="block text-sm font-medium text-gray-700"
+                            >Dosage</label
+                          >
+                          <input
+                            type="text"
+                            class="dosage mt-1 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label
+                            for="instructions"
+                            class="block text-sm font-medium text-gray-700"
+                            >Directions</label
+                          >
+                          <input
+                            type="text"
+                            class="instructions mt-1 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex justify-between mt-4">
+                      <button
+                        type="button"
+                        id="addFieldBtn"
+                        class="bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded flex items-center"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-5 w-5 mr-2"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 4v16m8-8H4"
+                          />
+                        </svg>
+                        Add Medicine
+                      </button>
+                      <button
+                        type="submit"
+                        class="bg-[#64758B] hover:bg-blue-700 text-white font-medium py-2 px-4 rounded"
+                      >
+                        Submit Prescriptions
+                      </button>
+                    </div>
+                  </form>
 
                   <!-- Modal Footer -->
                   <div

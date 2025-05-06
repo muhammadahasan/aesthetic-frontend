@@ -180,7 +180,7 @@ const availabilityManager = (function () {
     elements.slotGrid.innerHTML = "";
 
     // Generate all possible 45-min slots from 9:00 to 20:00
-    const allSlots = generateTimeSlots("09:00", "20:00", 45);
+    const allSlots = generateTimeSlots("09:00", "20:00", 60);
 
     // Create a document fragment for better performance
     const fragment = document.createDocumentFragment();

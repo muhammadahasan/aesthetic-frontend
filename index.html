@@ -160,11 +160,11 @@
 
     <!-- Main Navigation -->
     <nav class="bg-white content-container shadow-sm py-4">
-      <div class="w-full px-28">
+      <div class="w-full px-5 md:px-28">
         <div class="flex justify-between items-center">
           <a href="#" class="flex items-center">
             <!-- <img src="logo.png" alt="3D Lifestyle Logo" class="h-14" /> -->
-            <img src="./assets/images/logo.jpg" class="h-14" />
+            <img src="./assets/images/logo.png" class="h-14" />
           </a>
 
           <!-- Mobile menu button -->
@@ -292,9 +292,9 @@
         <div class="py-12 relative">
           <div class="flex flex-col lg:flex-row items-start gap-2">
             <!-- Left Content -->
-            <div class="lg:w-1/2 mb-10 lg:mb-0 pl-28 mt-20">
+            <div class="lg:w-1/2 mb-10 lg:mb-0 pl-5 md:pl-28 mt-20">
               <h1
-                class="cormorant text-5xl md:text-6xl lg:text-[100px] font-bold text-black"
+                class="cormorant text-center text-start text-3xl md:text-6xl lg:text-[100px] font-bold text-black"
               >
                 BEAUTY IS<br />SCIENCE
               </h1>
@@ -325,11 +325,11 @@
         </div>
         <!-- card content  -->
         <div
-          class="flex px-28 items-stretch justify-center gap-6 absolute -bottom-18 w-full mx-auto"
+          class="flex flex-col md:flex-row px-5 md:px-28 items-stretch justify-center gap-6 relative md:absolute -bottom-18 w-full mx-auto"
         >
           <!-- Services List -->
           <div
-            class="bg-white rounded-xl shadow-lg px-[48px] py-4 max-w-[748px] flex gap-4 items-stretch"
+            class="bg-white rounded-xl shadow-lg px-[48px] py-4 max-w-[748px] flex flex-col md:flex-row gap-4 items-stretch"
           >
             <div class="w-full">
               <h2 class="text-[28px] font-bold text-gray-800 cormorant">
@@ -514,7 +514,7 @@
       <div
         class="content-container shadow-[0px_1px_32px_16px_rgba(0,0,0,0.02)] mt-24"
       >
-        <div class="px-28 py-12 w-full bg-white">
+        <div class="px-5 md:px-28 py-12 w-full bg-white">
           <div class="flex flex-col lg:flex-row gap-12 items-start">
             <!-- Left side - Image -->
             <div class="lg:w-3/4">
@@ -629,7 +629,7 @@
       </div>
 
       <!-- broad overview -->
-      <div class="content-container px-28 py-12 bg-white mt-4">
+      <div class="content-container px-5 md:px-28 py-12 bg-white mt-4">
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center"
         >
@@ -692,7 +692,7 @@
       </div>
 
       <!-- services  -->
-      <div class="content-container px-28 py-12 bg-white mt-4">
+      <div class="content-container px-5 md:px-28 py-12 bg-white mt-4">
         <!-- Header Section -->
         <div class="mb-8">
           <h3 class="text-primary text-xl font-semibold mb-2">Our Services</h3>
@@ -726,11 +726,13 @@
       </div>
 
       <!-- Our Physicians -->
-      <div class="content-container px-28 py-12 bg-white mt-4">
+      <div class="content-container bg-white px-5 md:px-28 py-12 mt-4">
         <!-- Header Section -->
         <p class="text-primary text-xl font-semibold mb-2">Our Physicians</p>
 
-        <div class="flex justify-between items-center mt-2 mb-10">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center mt-2 mb-10"
+        >
           <h1 class="text-3xl md:text-4xl font-serif font-medium text-gray-900">
             Our Team Of Highly-Trained<br />Professionals
           </h1>
@@ -752,7 +754,7 @@
 
       <div class="relative w-full pt-20">
         <div class="w-full bg-[#405570] relative">
-          <div class="content-container px-28">
+          <div class="content-container px-5 md:px-28">
             <div class="relative flex flex-col gap-2 -top-24">
               <!-- Main Image Section -->
 
@@ -760,7 +762,7 @@
                 <img
                   src="./assets/images/mackup.png"
                   alt="Facial treatment with mask application"
-                  class="w-full h-[622px] object-cover"
+                  class="w-full md:h-[622px] object-cover"
                 />
               </div>
 
@@ -836,7 +838,7 @@
 
       <!-- statisfied client  -->
 
-      <div class="w-full px-28 py-16">
+      <div class="w-full px-5 md:px-28 py-16">
         <!-- Heading Section -->
         <div class="content-container text-center mb-12">
           <h3 class="text-primary text-2xl font-semibold mb-2 font-inter">
@@ -989,8 +991,10 @@
       </div>
 
       <!-- Cosmetic Laser -->
-      <div class="bg-[#405570] mt-20 px-28 py-12">
-        <div class="content-container flex justify-between items-center gap-5">
+      <div class="bg-[#405570] mt-20 px-5 md:px-28 py-12">
+        <div
+          class="content-container flex flex-col md:flex-row justify-between items-center gap-5"
+        >
           <!-- Content -->
           <div class="flex flex-col items-start gap-10 text-white">
             <p class="font-medium text-[24px]">Reintroduce Yourself</p>
@@ -1014,7 +1018,7 @@
           <div>
             <img
               src="./assets/images/cosmetic-laser.png"
-              class="-mt-30"
+              class="mt:1 md:-mt-30"
               alt=""
             />
           </div>
@@ -1022,10 +1026,10 @@
       </div>
 
       <!-- Blogs & Articles -->
-      <div class="content-container p-28">
+      <div class="content-container p-5 md:p-28">
         <div class="flex flex-col items-center gap-10">
-          <p class="text-3xl font-bold">Latest Blogs & Articles</p>
-          <p class="text-lg text-center">
+          <p class="text-lg md:text-3xl font-bold">Latest Blogs & Articles</p>
+          <p class="text-md md:text-lg text-center">
             Lorem ipsum dolor sit amet elit sed magnis disconsectetur
             adipiscing<br class="hidden md:block" />
             eiusmod tempor incididunt ut
@@ -1041,8 +1045,8 @@
         </div>
       </div>
       <!-- FAQ-section -->
-      <div class="content-container px-28 py-12">
-        <div class="flex justify-between gap-5">
+      <div class="content-container px-5 md:px-28 py-12">
+        <div class="flex flex-col md:flex-row justify-between gap-5">
           <img src="./assets/images/faq.png" alt="" />
           <div class="flex flex-col gap-10 p-5">
             <h2 class="text-primary font-bold text-2xl">FAQ</h2>
@@ -1052,8 +1056,10 @@
         </div>
       </div>
       <!-- Map-section -->
-      <div class="content-container px-28 py-12">
-        <div class="flex justify-between items-center gap-5">
+      <div class="content-container px-5 md:px-28 py-12">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-5"
+        >
           <img src="./assets/images/map-section.png" alt="" />
           <div class="bg-[#405570] flex flex-col w-full gap-5 p-5 text-white">
             <p class="text-[24px] font-[600]">Appointment</p>
@@ -1205,7 +1211,7 @@
       <div class="container mx-auto text-white">
         <!-- Row-1 -->
         <div
-          class="flex items-start justify-between border-b-2 border-[#D9D9D969] pb-8"
+          class="flex flex-col md:flex-row items-start justify-between border-b-2 border-[#D9D9D969] pb-8"
         >
           <!-- Col-1 -->
           <div class="flex flex-col gap-6">
@@ -1263,7 +1269,9 @@
                 Home
               </p>
               <a class="text-sm hover:text-primary cursor-pointer">Services</a>
-              <a class="text-sm hover:text-primary cursor-pointer"
+              <a
+                href="./pages/appointment.html"
+                class="text-sm hover:text-primary cursor-pointer"
                 >Appointment</a
               >
               <a class="text-sm hover:text-primary cursor-pointer">Media</a>
@@ -1334,7 +1342,9 @@
           </div>
         </div>
         <!-- Row-2 -->
-        <div class="flex items-center justify-between pt-8">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between pt-8"
+        >
           <p class="text-sm mb-2">
             Estheticare Clinic. Powered By
             <span class="text-primary">Gutenverse Blocks Adons.</span>

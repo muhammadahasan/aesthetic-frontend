@@ -148,7 +148,7 @@ function createPhysicianCard(physician) {
         class="w-full h-[452px] object-cover "
       />
        </div>
-        <div class="max-w-[315px] absolute bottom-3 left-0 right-4 bg-white py-4 px-6  shadow-[2px_2px_6px_0px_rgba(0,0,0,0.1)] shadow-[-2px_0px_6px_0px_rgba(0,0,0,0.12)]">
+        <div class="max-w-[280px] absolute bottom-3 left-0 right-4 bg-white py-4 px-6  shadow-[2px_2px_6px_0px_rgba(0,0,0,0.1)] shadow-[-2px_0px_6px_0px_rgba(0,0,0,0.12)]">
           <div class="flex flex-col space-y-1">
             <h3 class="text-2xl font-semibold cormorant text-primary">${physician.name}</h3>
             <p class="text-[#828282] text-sm font-medium">
@@ -336,7 +336,7 @@ blogs.forEach((blog) => {
   blogElement.style.minWidth = "300px";
 
   blogElement.innerHTML = `
-    <div class="flex gap-4">
+    <div class="flex flex-col md:flex-row gap-4">
       <img src="${blog.image}" alt="Blog ${blog.id}"  />
       <div class="text-secondary flex flex-col gap-5">
         <p class="text-[18px] font-semibold">

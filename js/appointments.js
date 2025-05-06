@@ -192,7 +192,7 @@ $(document).ready(function () {
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <button  class="text-gray-600 hover:text-gray-900 view-appointment-btn" data-id="${appointment._id}">
+                  <button  class="text-gray-600 hover:text-gray-900 view-appointment-btn" data-appointment-id="${appointment._id}" data-patient-id="${appointment.patientId}" data-doctor-id="${appointment.doctorId._id}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
@@ -200,17 +200,119 @@ $(document).ready(function () {
                 </td>
               </tr>
             `);
+
+            // region Prescription
             $("#prescriptionModal")
               .find("#closeModalBtn")
               .on("click", function () {
                 $("#prescriptionModal").addClass("hidden");
               });
 
-            // region Get Prescription
-            $("tbody").on("click", ".view-appointment-btn", function () {
-              const appointmentId = $(this).data("id");
+            // Add new prescription field set
+            $("#addFieldBtn").on("click", function () {
+              const newFieldSet = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 prescription-field-set mb-4">
+                  <div>
+                    <label for="medicineName" class="block text-sm font-medium text-gray-700">Medicine Name</label>
+                    <input type="text" class="medicineName mt-1 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500 />
+                  </div>
+                  <div>
+                    <label for="duration" class="block text-sm font-medium text-gray-700">Duration</label>
+                    <input type="text" class="duration mt-1 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500" />
+                  </div>
+                  <div>
+                    <label for="dosage" class="block text-sm font-medium text-gray-700">Dosage</label>
+                    <input type="text" class="dosage mt-1 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500 />
+                  </div>
+                  <div class="flex items-end">
+                    <div class="w-full">
+                      <label for="instructions" class="block text-sm font-medium text-gray-700">Directions</label>
+                      <input type="text" class="instructions mt-1 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500" />
+                    </div>
+                    <button type="button" class="removeFieldBtn ml-2 text-red-600 hover:text-red-800">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>`;
+              $("#prescriptionFields").append(newFieldSet);
+            });
+
+            // Remove prescription field set
+            $(document).on("click", ".removeFieldBtn", function () {
+              if ($(".prescription-field-set").length > 1) {
+                $(this).closest(".prescription-field-set").remove();
+              }
+            });
+
+            $("tbody").on("click", ".view-button", function () {
+              const patientId = $(this).attr("data-id");
               const doctorToken = localStorage.getItem("doctorToken");
-              const apiUrl = `${window.appConfig.API_BASE_URL}/doctor/get-prescription/${appointmentId}`;
+              const patientApiUrl = `${window.appConfig.API_BASE_URL}/doctor/appointment/patient/${patientId}`;
+
+              if (!doctorToken) {
+                console.error("Error: doctorToken is missing");
+                alert("Authentication token is missing. Please log in again.");
+                return;
+              }
+
+              $("#patientDetailsModal").removeClass("hidden");
+
+              $.ajax({
+                url: patientApiUrl,
+                method: "GET",
+                headers: {
+                  Authorization: `Bearer ${doctorToken}`,
+                },
+                success: function (response) {
+                  if (response.success && response.appointments.length > 0) {
+                    const appointment = response.appointments[0];
+                    const tableBody = $("#patientDetailsModal tbody");
+                    tableBody.empty();
+                    tableBody.append(`
+                      <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">1</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${appointment.date} | ${appointment.slot}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <div class="flex items-center">
+                            <span class="w-2.5 h-2.5 rounded-full bg-teal-500 mr-1.5"></span>
+                            <span class="text-gray-600">${appointment.status}</span>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                          <button class="text-gray-600 hover:text-gray-900 view-appointment-btn" data-status="${appointment.status}" data-appointment-id="${appointment._id}" data-patient-id="${appointment.patientId}" data-doctor-id="${appointment.doctorId._id}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                          </button>
+                        </td>
+                      </tr>
+                    `);
+                  } else {
+                    console.error("No appointment data found");
+                    alert("No appointment data available.");
+                  }
+                },
+                error: function (xhr, status, error) {
+                  console.error("Patient AJAX error:", {
+                    status,
+                    error,
+                    responseText: xhr.responseText,
+                  });
+                  alert("Failed to fetch appointment details.");
+                },
+              });
+            });
+
+            $("tbody").on("click", ".view-appointment-btn", function () {
+              const appointmentId = $(this).data("appointment-id");
+              const patientId = $(this).data("patient-id");
+              const doctorId = $(this).data("doctor-id");
+              const apptStatus = $(this).data("status");
+              console.log("status", apptStatus);
+              const doctorToken = localStorage.getItem("doctorToken");
+              const getPrescriptionUrl = `http://localhost:8000/api/doctor/get-prescription/${appointmentId}`;
 
               if (!doctorToken) {
                 console.error("Error: doctorToken is missing");
@@ -221,7 +323,7 @@ $(document).ready(function () {
               $("#prescriptionModal").removeClass("hidden");
 
               $.ajax({
-                url: apiUrl,
+                url: getPrescriptionUrl,
                 method: "GET",
                 headers: {
                   Authorization: `Bearer ${doctorToken}`,
@@ -242,10 +344,16 @@ $(document).ready(function () {
                             index + 1
                           }</td>
                           <td class="px-4 py-3 text-sm text-gray-900">${
-                            item.medicineName
+                            item.medicineName || "Unknown"
                           }</td>
                           <td class="px-4 py-3 text-sm text-gray-900">${
                             item.dosage
+                          }</td>
+                          <td class="px-4 py-3 text-sm text-gray-900">${
+                            item.duration || "N/A"
+                          }</td>
+                          <td class="px-4 py-3 text-sm text-gray-900">${
+                            item.directions || "N/A"
                           }</td>
                         </tr>
                       `);
@@ -253,7 +361,7 @@ $(document).ready(function () {
                   } else {
                     tableBody.append(`
                       <tr>
-                        <td colspan="3" class="px-4 py-3 text-sm text-gray-900 text-center">No prescription data available</td>
+                        <td colspan="5" class="px-4 py-3 text-sm text-gray-900 text-center">No prescription data available</td>
                       </tr>
                     `);
                   }
@@ -266,6 +374,133 @@ $(document).ready(function () {
                   });
                   alert("Failed to fetch prescription details.");
                 },
+              });
+
+              $("#addPrescriptionForm").on("submit", function (e) {
+                e.preventDefault();
+                const prescriptions = [];
+                let hasError = false;
+
+                $(".prescription-field-set").each(function () {
+                  const medicine = $(this).find(".medicineName").val();
+                  const duration = $(this).find(".duration").val();
+                  const dosage = $(this).find(".dosage").val();
+                  const instructions = $(this).find(".instructions").val();
+
+                  if (!medicine || !dosage) {
+                    hasError = true;
+                    return false; // Break the loop
+                  }
+
+                  prescriptions.push({
+                    medicine,
+                    duration,
+                    dosage,
+                    instructions,
+                  });
+                });
+
+                if (hasError) {
+                  alert(
+                    "Medicine Name and Dosage are required for all entries."
+                  );
+                  return;
+                }
+
+                if (prescriptions.length === 0) {
+                  alert("At least one prescription is required.");
+                  return;
+                }
+
+                const payload = {
+                  patient: patientId,
+                  doctor: doctorId,
+                  appointment: appointmentId,
+                  prescription: prescriptions,
+                };
+
+                $.ajax({
+                  url: "http://localhost:8000/api/doctor/add-prescription",
+                  method: "POST",
+                  headers: {
+                    Authorization: `Bearer ${doctorToken}`,
+                    "Content-Type": "application/json",
+                  },
+                  data: JSON.stringify(payload),
+                  success: function (response) {
+                    console.log("Add prescription success:", response);
+                    alert("Prescriptions added successfully.");
+                    $("#addPrescriptionForm")[0].reset();
+                    $("#prescriptionFields").html(`
+                      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 prescription-field-set mb-4">
+                        <div>
+                          <label for="medicineName" class="block text-sm font-medium text-gray-700">Medicine Name</label>
+                          <input type="text" class="medicineName mt-1 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500 />
+                        </div>
+                        <div>
+                          <label for="duration" class="block text-sm font-medium text-gray-700">Duration</label>
+                          <input type="text" class="duration mt-1 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500" />
+                        </div>
+                        <div>
+                          <label for="dosage" class="block text-sm font-medium text-gray-700">Dosage</label>
+                          <input type="text" class="dosage mt-1 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500 />
+                        </div>
+                        <div>
+                          <label for="instructions" class="block text-sm font-medium text-gray-700">Directions</label>
+                          <input type="text" class="instructions mt-1 w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-teal-500" />
+                        </div>
+                      </div>
+                    `);
+                    $.ajax({
+                      url: getPrescriptionUrl,
+                      method: "GET",
+                      headers: {
+                        Authorization: `Bearer ${doctorToken}`,
+                      },
+                      success: function (response) {
+                        const tableBody = $("#drugTableBody");
+                        tableBody.empty();
+                        if (
+                          response.prescription &&
+                          response.prescription.length > 0
+                        ) {
+                          response.prescription.forEach((item, index) => {
+                            tableBody.append(`
+                              <tr class="border-b">
+                                <td class="px-4 py-3 text-sm text-gray-900">${
+                                  index + 1
+                                }</td>
+                                <td class="px-4 py-3 text-sm text-gray-900">${
+                                  item.medicineName || "Unknown"
+                                }</td>
+                                <td class="px-4 py-3 text-sm text-gray-900">${
+                                  item.dosage
+                                }</td>
+                                <td class="px-4 py-3 text-sm text-gray-900">${
+                                  item.duration || "N/A"
+                                }</td>
+                                <td class="px-4 py-3 text-sm text-gray-900">${
+                                  item.instructions || "N/A"
+                                }</td>
+                              </tr>
+                            `);
+                          });
+                        }
+                      },
+                      error: function () {
+                        alert("Failed to refresh prescription list.");
+                      },
+                    });
+                  },
+                  error: function (xhr, status, error) {
+                    console.error("Add prescription error:", {
+                      status,
+                      error,
+                      responseText: xhr.responseText,
+                    });
+                    alert("Failed to add prescriptions.");
+                  },
+                });
               });
             });
           } else {
