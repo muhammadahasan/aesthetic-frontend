@@ -5,6 +5,9 @@ $(document).ready(function () {
   const itemsPerPage = 10; // Handle 10 items per page
   let allAppointments = []; // Store all appointments for client-side pagination
 
+  // Debug: Log when script initializes
+  console.log("Appointments script initialized");
+
   // Function to fetch appointments
   function fetchAppointments(page = 1) {
     console.log(`Fetching appointments for page ${page}`); // Debug: Log page number
@@ -189,7 +192,7 @@ $(document).ready(function () {
                   </div>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap">
-                  <button class="text-gray-600 hover:text-gray-900">
+                  <button class="prescription-button text-gray-600 hover:text-gray-900" data-id="${appointment._id}">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
@@ -219,6 +222,109 @@ $(document).ready(function () {
       });
     });
 
+  // region prescription modal
+  // Debug: Log when binding prescription button event
+  function openPrescriptionModal() {
+    $("#prescriptionModal").removeClass("hidden");
+    $("body").css("overflow", "hidden"); // Prevent scrolling when modal is open
+  }
+
+  function closePrescriptionModal() {
+    $("#prescriptionModal").addClass("hidden");
+    $("body").css("overflow", ""); // Restore scrolling
+    hideAddDrugForm();
+  }
+
+  // Add Drug form functions
+  function showAddDrugForm() {
+    $("#addDrugForm").removeClass("hidden");
+  }
+
+  function hideAddDrugForm() {
+    $("#addDrugForm").addClass("hidden");
+    // Clear form fields
+    $("#medicineName").val("");
+    $("#strength").val("");
+    $("#dosage").val("");
+    $("#duration").val("");
+  }
+
+  // Add new drug to the table
+  function addDrug() {
+    const medicineName = $("#medicineName").val();
+    const strength = $("#strength").val();
+    const dosage = $("#dosage").val();
+    const duration = $("#duration").val();
+
+    // Validate inputs
+    if (!medicineName || !strength || !dosage || !duration) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    const tableBody = $("#drugTableBody");
+    const rowCount = tableBody.find("tr").length + 1;
+
+    // Create new row
+    const newRow = $(`
+      <tr class="border-b">
+        <td class="px-4 py-3 text-sm text-gray-700">${rowCount}</td>
+        <td class="px-4 py-3 text-sm text-gray-700">${medicineName}</td>
+        <td class="px-4 py-3 text-sm text-gray-700">${strength}</td>
+        <td class="px-4 py-3 text-sm text-gray-700">${dosage}</td>
+        <td class="px-4 py-3 text-sm text-gray-700">${duration}</td>
+      </tr>
+    `);
+
+    // Add the row to the table
+    tableBody.append(newRow);
+
+    // Hide and reset the form
+    hideAddDrugForm();
+  }
+
+  // Make functions available globally
+  window.showAddDrugForm = showAddDrugForm;
+  window.hideAddDrugForm = hideAddDrugForm;
+  window.addDrug = addDrug;
+  window.openPrescriptionModal = openPrescriptionModal;
+  window.closePrescriptionModal = closePrescriptionModal;
+
+  // Close modal when clicking outside or pressing Escape
+  $("#prescriptionModal").on("click", function (event) {
+    if (event.target === this) {
+      closePrescriptionModal();
+    }
+  });
+
+  // Close button in prescription modal
+  $("#prescriptionModal .bg-\\[\\#64758B\\]").on("click", function () {
+    closePrescriptionModal();
+  });
+
+  // Close modal when pressing Escape key
+  $(document).on("keydown", function (event) {
+    if (event.key === "Escape") {
+      closePrescriptionModal();
+    }
+  });
+
+  // Debug: Make sure the prescription-button click handler is properly connecting
+  console.log("Setting up prescription button click handler");
+
+  // Fix the prescription-button click handler
+  $(document).on("click", ".prescription-button", function () {
+    console.log("Prescription button clicked"); // Debug: Confirm click
+    const appointmentId = $(this).attr("data-id");
+    console.log(`Appointment ID: ${appointmentId}`);
+
+    // Debug: Check if prescription modal exists
+    console.log("Prescription modal exists:", $("#prescriptionModal").length);
+
+    // Show the prescription modal
+    $("#prescriptionModal").removeClass("hidden");
+    $("body").css("overflow", "hidden"); // Prevent scrolling
+  });
   // Function to update appointment status
   function updateAppointmentStatus(appointmentId, status, page) {
     console.log(`Updating appointment ${appointmentId} to status ${status}`);
