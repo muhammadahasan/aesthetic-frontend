@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <div
+        id="prescriptionModal"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden z-40"
+      >
+        <div class="flex items-center justify-center h-full p-4">
+          <!-- Modal Content -->
+          <div
+            class="bg-white rounded-lg shadow-xl max-w-3xl w-full mx-4"
+            onclick="event.stopPropagation()"
+          >
+            <!-- Prescription Content -->
+            <div class="p-6">
+              <!-- Rx Icon and Title -->
+              <div class="flex flex-col mb-6">
+                <img
+                  src="../assets/images/drugs-list.png"
+                  class="h-10 w-10"
+                  alt="Drugs List"
+                />
+                <h3 class="text-xl font-medium">Drugs List</h3>
+              </div>
+
+              <!-- Drugs Table -->
+              <div class="overflow-x-auto bg-gray-50 rounded-lg">
+                <table class="min-w-full">
+                  <thead>
+                    <tr class="border-b">
+                      <th
+                        class="px-4 py-3 text-left text-sm font-medium text-gray-700"
+                      >
+                        #
+                      </th>
+                      <th
+                        class="px-4 py-3 text-left text-sm font-medium text-gray-700"
+                      >
+                        Medicine Name
+                      </th>
+                      <th
+                        class="px-4 py-3 text-left text-sm font-medium text-gray-700"
+                      >
+                        Strength
+                      </th>
+                      <th
+                        class="px-4 py-3 text-left text-sm font-medium text-gray-700"
+                      >
+                        Dosage
+                      </th>
+                      <th
+                        class="px-4 py-3 text-left text-sm font-medium text-gray-700"
+                      >
+                        Duration
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="drugTableBody">
+                    <!-- Table rows will be populated by JavaScript -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Modal Footer -->
+              <div class="bg-gray-50 px-6 py-4 flex justify-end rounded-b-lg">
+                <button
+                  class="bg-[#64758B] hover:bg-blue-700 text-white font-medium py-2 px-4 rounded"
+                  onclick="closePrescriptionModal()"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
