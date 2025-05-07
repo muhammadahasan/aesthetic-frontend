@@ -99,7 +99,7 @@
             </div>
           </div>
 
-          <div class="flex items-center">
+          <div class="flex items-center relative">
             <div class="flex items-center">
               <img
                 src="https://randomuser.me/api/portraits/men/32.jpg"
@@ -107,13 +107,31 @@
                 class="h-10 w-10 rounded-full border-2 border-white"
               />
               <div class="ml-2 hidden md:block">
-                <h3 class="font-medium text-sm">Dr Amirul Haque</h3>
-                <p class="text-xs text-gray-500">Urologist</p>
+                <h3 id="doctor-name" class="font-medium text-sm">
+                  Dr Amirul Haque
+                </h3>
+                <p id="doctor-specialization" class="text-xs text-gray-500">
+                  Urologist
+                </p>
               </div>
             </div>
-            <button class="ml-2 text-gray-500">
+            <button
+              id="dropdown-toggle"
+              class="ml-2 text-gray-500 focus:outline-none"
+            >
               <i class="fas fa-chevron-down"></i>
             </button>
+            <div
+              id="dropdown-menu"
+              class="hidden absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-10 top-full"
+            >
+              <button
+                onclick="logout()"
+                class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 focus:outline-none"
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </header>
 
@@ -552,6 +570,34 @@
           const sidebar = document.querySelector("aside");
           sidebar.classList.toggle("hidden");
         });
+    </script>
+    <script>
+      // region logout
+      function logout() {
+        localStorage.removeItem("doctorToken");
+        localStorage.removeItem("doctorData");
+        window.location.href = "/admin/login.html";
+      }
+
+      // Toggle dropdown menu
+      document
+        .getElementById("dropdown-toggle")
+        .addEventListener("click", function () {
+          const dropdownMenu = document.getElementById("dropdown-menu");
+          dropdownMenu.classList.toggle("hidden");
+        });
+
+      // Close dropdown when clicking outside
+      document.addEventListener("click", function (event) {
+        const dropdown = document.getElementById("dropdown-menu");
+        const toggleButton = document.getElementById("dropdown-toggle");
+        if (
+          !dropdown.contains(event.target) &&
+          !toggleButton.contains(event.target)
+        ) {
+          dropdown.classList.add("hidden");
+        }
+      });
     </script>
   </body>
 </html>

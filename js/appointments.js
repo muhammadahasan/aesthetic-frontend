@@ -4,7 +4,13 @@ $(document).ready(function () {
 
   const itemsPerPage = 10; // Handle 10 items per page
   let allAppointments = []; // Store all appointments for client-side pagination
-
+  const doctorData = JSON.parse(localStorage.getItem("doctorData"));
+  // Initialize doctor info
+  if (doctorData?.name && doctorData?.specialization) {
+    $("#doctor-name").text(doctorData.name);
+    $("#doctor-name1").text(doctorData.name);
+    $("#doctor-specialization").text(doctorData.specialization);
+  }
   // Debug: Log when script initializes
   console.log("Appointments script initialized");
 
