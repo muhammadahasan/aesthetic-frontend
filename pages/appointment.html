@@ -868,7 +868,8 @@
           }
 
           $.ajax({
-            url: `http://localhost:8000/api/patient/get-available-slots/68120aba8af2c0b4edeb5a5a/${selectedDate}`,
+            url: `${window.appConfig.API_BASE_URL}/patient/get-available-slots/68120aba8af2c0b4edeb5a5a/${selectedDate}`,
+
             method: "GET",
             success: function (data) {
               const slots = data.availableSlots || [];

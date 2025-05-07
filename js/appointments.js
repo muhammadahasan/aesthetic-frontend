@@ -312,7 +312,8 @@ $(document).ready(function () {
               const apptStatus = $(this).data("status");
               console.log("status", apptStatus);
               const doctorToken = localStorage.getItem("doctorToken");
-              const getPrescriptionUrl = `http://localhost:8000/api/doctor/get-prescription/${appointmentId}`;
+              // const getPrescriptionUrl = `http://localhost:8000/api/doctor/get-prescription/${appointmentId}`;
+              const getPrescriptionUrl = `${window.appConfig.API_BASE_URL}/doctor/get-prescription/${appointmentId}`;
 
               if (!doctorToken) {
                 console.error("Error: doctorToken is missing");
@@ -420,7 +421,8 @@ $(document).ready(function () {
                 };
 
                 $.ajax({
-                  url: "http://localhost:8000/api/doctor/add-prescription",
+                  url: `${window.appConfig.API_BASE_URL}/doctor/add-prescription`,
+                  // url: `${window.appConfig.API_BASE_URL}/doctor/add-prescription`,
                   method: "POST",
                   headers: {
                     Authorization: `Bearer ${doctorToken}`,
